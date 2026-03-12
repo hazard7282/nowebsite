@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Adam Bogdan DJ — Miami-based DJ and producer. Minimal, deep, and tech house. Founder of Rapture's Deli label. Booking inquiries welcome.">
+<meta name="keywords" content="Adam Bogdan DJ, minimal house, deep tech house, Miami DJ, Rapture's Deli, underground house music">
+<meta property="og:title" content="Adam Bogdan DJ">
+<meta property="og:description" content="Miami-based DJ & producer. Minimal · Deep · Tech House.">
+<meta property="og:url" content="https://adambogdan.com">
+<title>Adam Bogdan DJ — Miami</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f7f6f3;
+    --surface: #fff;
+    --border: #e4e2dc;
+    --border-light: #eeece7;
+    --text: #111010;
+    --muted: #888580;
+    --faint: #b8b5ae;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --nav-h: 64px;
+    --max: 1080px;
+    --pad: clamp(20px, 5vw, 60px);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  button { font-family: var(--sans); cursor: pointer; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: rgba(247,246,243,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--pad);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    color: var(--text);
+  }
+  .nav-logo span { font-style: italic; }
+  .nav-links {
+    display: flex;
+    gap: 2px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--text); background: var(--border-light); }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text);
+    transition: all 0.25s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: var(--bg);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--text);
+    padding: 10px 20px;
+  }
+  .mobile-close {
+    position: absolute;
+    top: 20px; right: var(--pad);
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  /* ── PAGES ── */
+  .page { display: none; padding-top: var(--nav-h); min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    height: calc(100vh - var(--nav-h));
+    min-height: 560px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: #1c1b19;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-bg-text {
+    font-size: 11px;
+    color: rgba(255,255,255,0.18);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .hero-bg img { position: absolute; inset: 0; opacity: 0.75; }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,14,12,0.82) 0%, rgba(15,14,12,0.1) 60%, transparent 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: clamp(32px, 6vw, 72px);
+    width: 100%;
+    max-width: var(--max);
+    margin: 0 auto;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 14px;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 96px);
+    color: #fff;
+    line-height: 0.95;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .hero-name em { font-style: italic; }
+  .hero-tagline {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 36px;
+  }
+  .hero-tagline span { margin: 0 8px; opacity: 0.4; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 12px 28px;
+    background: #fff;
+    color: #111;
+    border: none;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-outline {
+    padding: 12px 28px;
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
+
+  /* ── SECTION WRAPPER ── */
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+  }
+  .section {
+    padding: clamp(48px, 7vw, 96px) 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; }
+  .section-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 12px;
+  }
+  .section-link {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .section-link:hover { color: var(--text); border-color: var(--text); }
+
+  /* ── RELEASE CARDS ── */
+  .releases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .release-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .release-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+  .release-art {
+    aspect-ratio: 1;
+    background: #e8e6e0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .release-art-ph {
+    font-size: 10px;
+    color: var(--faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: absolute;
+  }
+  .release-info { padding: 16px 18px 18px; }
+  .release-title { font-family: var(--serif); font-size: 18px; margin-bottom: 4px; line-height: 1.2; }
+  .release-meta { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .release-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .release-link {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 5px 10px;
+    transition: all 0.2s;
+  }
+  .release-link:hover { color: var(--text); border-color: var(--text); }
+
+  /* ── VIDEO EMBED ── */
+  .video-wrap {
+    position: relative;
+    padding-top: 56.25%;
+    background: #1c1b19;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .video-ph {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .video-ph-icon {
+    width: 54px;
+    height: 54px;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-ph-icon::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 0 9px 16px;
+    border-color: transparent transparent transparent rgba(255,255,255,0.5);
+    margin-left: 3px;
+  }
+  .video-ph-text { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.12em; text-transform: uppercase; }
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* ── STREAM PLATFORMS ── */
+  .platform-row {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .platform-btn {
+    flex: 1;
+    padding: 14px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: none;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .platform-btn:last-child { border-right: none; }
+  .platform-btn:hover { background: var(--bg); color: var(--text); }
+  .platform-btn svg { width: 18px; height: 18px; fill: currentColor; opacity: 0.6; }
+
+  /* ── ABOUT PAGE ── */
+  .about-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+    padding: clamp(48px, 7vw, 96px) 0;
+  }
+  .about-photo {
+    aspect-ratio: 3/4;
+    background: #dedad3;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-photo-ph { font-size: 10px; color: var(--faint); letter-spacing: 0.1em; text-transform: uppercase; position: absolute; }
+  .about-eyebrow { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); margin-bottom: 16px; }
+  .about-name { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); line-height: 1.0; margin-bottom: 24px; letter-spacing: -0.02em; }
+  .about-name em { font-style: italic; }
+  .about-body { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 16px; font-weight: 300; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; margin-bottom: 32px; }
+  .about-tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+  }
+  .download-epk {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 3px;
+    padding: 10px 20px;
+    transition: all 0.2s;
+  }
+  .download-epk:hover { background: var(--text); color: var(--bg); }
+
+  /* BOOKINGS TABLE */
+  .bookings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 48px;
+  }
+  .booking-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .booking-item:last-child { border-bottom: none; }
+  .booking-name { font-size: 14px; font-weight: 400; }
+  .booking-location { font-size: 12px; color: var(--muted); margin-top: 1px; }
+  .booking-region {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  /* LABELS ROW */
+  .labels-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .label-pill {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--muted);
+    background: var(--surface);
+    transition: all 0.2s;
+  }
+  .label-pill:hover { color: var(--text); border-color: var(--muted); }
+
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 260px;
+    gap: 12px;
+  }
+  .gallery-grid .wide { grid-column: span 2; }
+  .gallery-grid .tall { grid-row: span 2; }
+  .gallery-cell {
+    background: #dedad3;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gallery-cell-ph { font-size: 10px; color: var(--faint); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── STORE ── */
+  .store-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .store-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--surface);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .store-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.07); }
+  .store-img {
+    aspect-ratio: 1;
+    background: #e8e6e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .store-img-ph { font-size: 10px; color: var(--faint); letter-spacing: 0.1em; text-transform: uppercase; }
+  .store-info { padding: 16px 18px 18px; display: flex; align-items: center; justify-content: space-between; }
+  .store-name { font-family: var(--serif); font-size: 18px; }
+  .store-price { font-size: 13px; color: var(--muted); }
+  .store-btn {
+    display: block;
+    width: calc(100% - 36px);
+    margin: 0 18px 18px;
+    padding: 10px;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 3px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .store-btn:hover { opacity: 0.75; }
+  .store-note {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 32px;
+    padding: 20px;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: start;
+  }
+  .contact-heading { font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); line-height: 1.1; margin-bottom: 12px; }
+  .contact-subtext { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 36px; font-weight: 300; }
+  .form-group { margin-bottom: 18px; }
+  .form-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 8px; }
+  .form-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-input:focus { border-color: var(--text); }
+  .form-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text);
+    background: var(--surface);
+    height: 120px;
+    resize: vertical;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-textarea:focus { border-color: var(--text); }
+  .form-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+    margin-top: 6px;
+  }
+  .form-submit:hover { opacity: 0.75; }
+  .contact-sidebar { position: sticky; top: calc(var(--nav-h) + 32px); }
+  .sidebar-section { margin-bottom: 32px; }
+  .sidebar-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); margin-bottom: 14px; }
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+    transition: opacity 0.2s;
+  }
+  .social-link:last-child { border-bottom: none; }
+  .social-link:hover { opacity: 0.6; }
+  .social-name { font-size: 14px; font-weight: 400; }
+  .social-handle { font-size: 12px; color: var(--muted); }
+  .label-card {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+  }
+  .label-card-name { font-family: var(--serif); font-size: 22px; margin-bottom: 4px; }
+  .label-card-sub { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .label-card-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: all 0.2s;
+  }
+  .label-card-link:hover { color: var(--text); border-color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px var(--pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-logo { font-family: var(--serif); font-size: 16px; color: var(--text); }
+  .footer-logo em { font-style: italic; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+  .footer-copy { font-size: 11px; color: var(--faint); }
+
+  /* ── DIVIDER ── */
+  .rule { border: none; border-top: 1px solid var(--border-light); margin: 0; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.7s ease both; }
+  .fade-up-2 { animation: fadeUp 0.7s 0.15s ease both; }
+  .fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .releases-grid { grid-template-columns: 1fr 1fr; }
+    .about-hero { grid-template-columns: 1fr; }
+    .about-photo { aspect-ratio: 4/3; }
+    .bookings-grid { grid-template-columns: 1fr; gap: 0; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid .wide { grid-column: span 1; }
+    .store-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-sidebar { position: static; }
+    .video-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .releases-grid { grid-template-columns: 1fr; }
+    .store-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-grid .wide, .gallery-grid .tall { grid-column: span 1; grid-row: span 1; }
+    .hero-name { font-size: 48px; }
+    .platform-row { flex-wrap: wrap; }
+    .platform-btn { min-width: 50%; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('home')">Adam <em>Bogdan</em></a>
+  <ul class="nav-links">
+    <li><a href="#" class="active" onclick="showPage('home');return false;">Home</a></li>
+    <li><a href="#" onclick="showPage('about');return false;">About</a></li>
+    <li><a href="#" onclick="showPage('music');return false;">Music</a></li>
+    <li><a href="#" onclick="showPage('gallery');return false;">Gallery</a></li>
+    <li><a href="#" onclick="showPage('store');return false;">Store</a></li>
+    <li><a href="#" onclick="showPage('contact');return false;">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">×</button>
+  <a href="#" onclick="showPage('home');toggleMenu();return false;">Home</a>
+  <a href="#" onclick="showPage('about');toggleMenu();return false;">About</a>
+  <a href="#" onclick="showPage('music');toggleMenu();return false;">Music</a>
+  <a href="#" onclick="showPage('gallery');toggleMenu();return false;">Gallery</a>
+  <a href="#" onclick="showPage('store');toggleMenu();return false;">Store</a>
+  <a href="#" onclick="showPage('contact');toggleMenu();return false;">Contact</a>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HOME
+══════════════════════════════════════════ -->
+<div id="home" class="page active">
+
+  <div class="hero">
+    <div class="hero-bg">
+      <span class="hero-bg-text">Press photo — replace with high-res image</span>
+      <!-- <img src="images/hero.jpg" alt="Adam Bogdan DJ"> -->
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow fade-up">Miami, Florida</div>
+      <h1 class="hero-name fade-up-2">Adam<br><em>Bogdan</em></h1>
+      <div class="hero-tagline fade-up-3">
+        Minimal<span>·</span>Deep<span>·</span>Tech House
+      </div>
+      <div class="hero-actions fade-up-3">
+        <button class="btn-primary" onclick="showPage('contact')">Booking Inquiry</button>
+        <button class="btn-outline" onclick="showPage('music')">Listen Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Latest Releases -->
+  <div class="section">
+    <div class="wrap">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">Releases</div>
+          <h2 class="section-title">Latest <em>Music</em></h2>
+        </div>
+        <a href="#" class="section-link" onclick="showPage('music');return false;">View all</a>
+      </div>
+      <div class="releases-grid">
+        <div class="release-card">
+          <div class="release-art">
+            <span class="release-art-ph">Artwork</span>
+            <!-- <img src="images/madras.jpg" alt="Madras"> -->
+          </div>
+          <div class="release-info">
+            <div class="release-title">Madras</div>
+            <div class="release-meta">Rapture's Deli · 2024</div>
+            <div class="release-links">
+              <a href="https://www.beatport.com/label/raptures-deli/131250" target="_blank" class="release-link">Beatport</a>
+              <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" class="release-link">Spotify</a>
+              <a href="https://soundcloud.com/adambogdandj" target="_blank" class="release-link">SoundCloud</a>
+            </div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="release-art">
+            <span class="release-art-ph">Artwork</span>
+            <!-- <img src="images/bardot.jpg" alt="Bardot Was Here"> -->
+          </div>
+          <div class="release-info">
+            <div class="release-title">Bardot Was Here</div>
+            <div class="release-meta">Rapture's Deli · 2024</div>
+            <div class="release-links">
+              <a href="https://www.beatport.com/label/raptures-deli/131250" target="_blank" class="release-link">Beatport</a>
+              <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" class="release-link">Spotify</a>
+              <a href="https://soundcloud.com/adambogdandj" target="_blank" class="release-link">SoundCloud</a>
+            </div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="release-art">
+            <span class="release-art-ph">Artwork</span>
+            <!-- <img src="images/neon-fade.jpg" alt="Neon Fade"> -->
+          </div>
+          <div class="release-info">
+            <div class="release-title">Neon Fade <span style="font-size:12px;color:var(--muted)">(Adam Bogdan Remix)</span></div>
+            <div class="release-meta">Sepp · Rapture's Deli · 2024</div>
+            <div class="release-links">
+              <a href="https://www.beatport.com/release/neon-fade/5640037" target="_blank" class="release-link">Beatport</a>
+              <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" class="release-link">Spotify</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Latest Mix -->
+  <div class="section">
+    <div class="wrap">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">Mix</div>
+          <h2 class="section-title">Latest <em>Session</em></h2>
+        </div>
+      </div>
+      <div class="video-wrap">
+        <div class="video-ph">
+          <div class="video-ph-icon"></div>
+          <div class="video-ph-text">2hr Studio Mix · Ritmica Studios Miami — paste YouTube embed here</div>
+        </div>
+        <!-- Replace div.video-ph with:
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+        -->
+      </div>
+      <div style="margin-top:14px; font-size:12px; color:var(--muted); text-align:center; letter-spacing:0.06em;">
+        Recorded live at Ritmica Studios, Miami · Minimal Deep Tech House
+      </div>
+    </div>
+  </div>
+
+  <!-- Stream platforms -->
+  <div class="section">
+    <div class="wrap">
+      <div class="section-eyebrow" style="margin-bottom:16px;">Stream &amp; Follow</div>
+      <div class="platform-row">
+        <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </a>
+        <a href="https://soundcloud.com/adambogdandj" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M11.56 8.87V17h-1.7V7h1.52l3.93 8.09V7h1.7v10h-1.52zm-6.5.03L6.56 17H4.84L3 7h1.72l1.2 6.95L7.1 7h1.47l1.19 6.95L10.96 7h1.72l-1.84 10H9.12zM22 7v1.5h-3v2.45h2.6V12H19v3.5h3V17h-4.7V7z"/></svg>
+          SoundCloud
+        </a>
+        <a href="https://www.beatport.com/artist/adam-bogdan/128861" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M1.008 0C.44 0 0 .453 0 1.01v21.98C0 23.549.453 24 1.008 24h21.984C23.551 24 24 23.547 24 22.99V1.01C24 .451 23.547 0 22.992 0zm12.56 5.532l2.15 3.72 2.148-3.72h2.335l-3.32 5.484 3.429 5.68h-2.354l-2.238-3.875-2.238 3.875H11.1l3.43-5.68-3.32-5.484zm-8.184.072h4.116c1.737 0 2.96 1.101 2.96 2.674 0 1.06-.546 1.875-1.39 2.282.985.37 1.624 1.265 1.624 2.418 0 1.741-1.303 2.898-3.16 2.898H5.383zm1.97 1.595v2.517h1.937c.73 0 1.183-.45 1.183-1.258 0-.79-.454-1.259-1.183-1.259zm0 4.073v2.813h2.133c.822 0 1.315-.489 1.315-1.406 0-.918-.493-1.407-1.315-1.407z"/></svg>
+          Beatport
+        </a>
+        <a href="https://www.youtube.com/@adambogdandj" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a href="https://www.instagram.com/adambogdandj" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap" style="width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div class="footer-logo">Adam <em>Bogdan</em></div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('about');return false;">About</a>
+        <a href="#" onclick="showPage('music');return false;">Music</a>
+        <a href="#" onclick="showPage('contact');return false;">Booking</a>
+        <a href="https://www.beatport.com/label/raptures-deli/131250" target="_blank">Rapture's Deli</a>
+      </div>
+      <div class="footer-copy">© 2025 Adam Bogdan · Miami, FL</div>
+    </div>
+  </footer>
+
+</div><!-- /home -->
+
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<div id="about" class="page">
+  <div class="wrap">
+    <div class="about-hero">
+      <div class="about-photo">
+        <span class="about-photo-ph">Press photo</span>
+        <!-- <img src="images/press-1.jpg" alt="Adam Bogdan"> -->
+      </div>
+      <div>
+        <div class="about-eyebrow">Miami, FL · DJ · Producer</div>
+        <h1 class="about-name">Adam<br><em>Bogdan</em></h1>
+        <p class="about-body">
+          Miami-based DJ and producer Adam Bogdan has spent nearly 20 years behind the decks — starting his journey in Romania before carving a path through Germany, Ibiza, and landing at the heart of the Miami underground scene.
+        </p>
+        <p class="about-body">
+          A no-boundary artist with a wide musical vision, he has played for crowds across Europe, the Caribbean, and the USA — as both guest and resident — at venues including Fontainebleau, Arkadia Day Club, The Anderson, and Mode Miami.
+        </p>
+        <p class="about-body">
+          His sound moves through house, minimal tech, and deep grooves, sprinkled with dub textures and vocal elements. The throughline is always the same: groove, first and always.
+        </p>
+        <div class="about-tags">
+          <span class="about-tag">Minimal House</span>
+          <span class="about-tag">Deep Tech</span>
+          <span class="about-tag">Miami Underground</span>
+          <span class="about-tag">Rapture's Deli</span>
+          <span class="about-tag">~20 Years DJing</span>
+        </div>
+        <a href="#" class="download-epk" download>
+          ↓ &nbsp;Download Press Kit
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- Bookings -->
+  <div class="section">
+    <div class="wrap">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">Live</div>
+          <h2 class="section-title">Selected <em>Bookings</em></h2>
+        </div>
+      </div>
+      <div class="bookings-grid">
+        <div>
+          <div class="booking-item"><div><div class="booking-name">Fontainebleau</div><div class="booking-location">Miami, FL</div></div><span class="booking-region">Miami</span></div>
+          <div class="booking-item"><div><div class="booking-name">Arkadia Day Club</div><div class="booking-location">Miami, FL</div></div><span class="booking-region">Miami</span></div>
+          <div class="booking-item"><div><div class="booking-name">Mode Miami</div><div class="booking-location">Miami, FL</div></div><span class="booking-region">Miami</span></div>
+          <div class="booking-item"><div><div class="booking-name">The Anderson</div><div class="booking-location">Miami, FL</div></div><span class="booking-region">Miami</span></div>
+          <div class="booking-item"><div><div class="booking-name">Mezcalista</div><div class="booking-location">Miami, FL</div></div><span class="booking-region">Miami</span></div>
+          <div class="booking-item"><div><div class="booking-name">DOM's</div><div class="booking-location">Miami, FL</div></div><span class="booking-region">Miami</span></div>
+          <div class="booking-item"><div><div class="booking-name">Rapture's Deli Events</div><div class="booking-location">Miami, FL</div></div><span class="booking-region">Residency</span></div>
+        </div>
+        <div>
+          <div class="booking-item"><div><div class="booking-name">Vinyl Bar</div><div class="booking-location">Frankfurt, Germany</div></div><span class="booking-region">Europe</span></div>
+          <div class="booking-item"><div><div class="booking-name">Strabon</div><div class="booking-location">Stavanger, Norway</div></div><span class="booking-region">Europe</span></div>
+          <div class="booking-item"><div><div class="booking-name">La Playa</div><div class="booking-location">Varna, Bulgaria</div></div><span class="booking-region">Europe</span></div>
+          <div class="booking-item"><div><div class="booking-name">Daimon / Silver</div><div class="booking-location">Bucharest, Romania</div></div><span class="booking-region">Romania</span></div>
+          <div class="booking-item"><div><div class="booking-name">Raum</div><div class="booking-location">Cluj, Romania</div></div><span class="booking-region">Romania</span></div>
+          <div class="booking-item"><div><div class="booking-name">Amphora</div><div class="booking-location">Vama Veche, Romania</div></div><span class="booking-region">Romania</span></div>
+          <div class="booking-item"><div><div class="booking-name">Royal Caribbean</div><div class="booking-location">Azamara</div></div><span class="booking-region">International</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Label credits -->
+  <div class="section">
+    <div class="wrap">
+      <div class="section-eyebrow" style="margin-bottom:16px;">Discography</div>
+      <h2 class="section-title" style="margin-bottom:24px;">Released <em>On</em></h2>
+      <div class="labels-row">
+        <a href="https://www.beatport.com/label/raptures-deli/131250" target="_blank" class="label-pill">Rapture's Deli</a>
+        <span class="label-pill">Axum [UK]</span>
+        <span class="label-pill">Similar [IT]</span>
+        <span class="label-pill">Ensemble Music [CH]</span>
+        <span class="label-pill">Catren [RO]</span>
+        <span class="label-pill">Skills [RO]</span>
+        <span class="label-pill">Sensual Sounds [UK]</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap" style="width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div class="footer-logo">Adam <em>Bogdan</em></div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home');return false;">Home</a>
+        <a href="#" onclick="showPage('music');return false;">Music</a>
+        <a href="#" onclick="showPage('contact');return false;">Booking</a>
+      </div>
+      <div class="footer-copy">© 2025 Adam Bogdan · Miami, FL</div>
+    </div>
+  </footer>
+</div><!-- /about -->
+
+
+<!-- ══════════════════════════════════════════
+     MUSIC
+══════════════════════════════════════════ -->
+<div id="music" class="page">
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-eyebrow">Discography</div>
+      <h1 class="section-title" style="margin-bottom:36px;">Releases</h1>
+      <div class="releases-grid">
+        <div class="release-card">
+          <div class="release-art"><span class="release-art-ph">Artwork</span></div>
+          <div class="release-info">
+            <div class="release-title">Madras</div>
+            <div class="release-meta">Rapture's Deli · 2024</div>
+            <div class="release-links">
+              <a href="https://www.beatport.com/release/madras/5269031" target="_blank" class="release-link">Beatport</a>
+              <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" class="release-link">Spotify</a>
+              <a href="https://soundcloud.com/adambogdandj" target="_blank" class="release-link">SoundCloud</a>
+            </div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="release-art"><span class="release-art-ph">Artwork</span></div>
+          <div class="release-info">
+            <div class="release-title">Bardot Was Here</div>
+            <div class="release-meta">Rapture's Deli · 2024</div>
+            <div class="release-links">
+              <a href="https://www.beatport.com/release/bardot-was-here/5125204" target="_blank" class="release-link">Beatport</a>
+              <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" class="release-link">Spotify</a>
+              <a href="https://soundcloud.com/adambogdandj" target="_blank" class="release-link">SoundCloud</a>
+            </div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="release-art"><span class="release-art-ph">Artwork</span></div>
+          <div class="release-info">
+            <div class="release-title">Neon Fade <span style="font-size:12px;color:var(--muted)">(Remix)</span></div>
+            <div class="release-meta">Sepp · Rapture's Deli · 2024</div>
+            <div class="release-links">
+              <a href="https://www.beatport.com/release/neon-fade/5640037" target="_blank" class="release-link">Beatport</a>
+              <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" class="release-link">Spotify</a>
+            </div>
+          </div>
+        </div>
+        <div class="release-card">
+          <div class="release-art"><span class="release-art-ph">Artwork</span></div>
+          <div class="release-info">
+            <div class="release-title">Back Catalogue</div>
+            <div class="release-meta">Axum · Similar · Catren · Ensemble Music</div>
+            <div class="release-links">
+              <a href="https://www.beatport.com/artist/adam-bogdan/128861" target="_blank" class="release-link">All on Beatport</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mixes & Videos -->
+  <div class="section">
+    <div class="wrap">
+      <div class="section-eyebrow">Video</div>
+      <h2 class="section-title" style="margin-bottom:28px;">Mixes &amp; <em>Sessions</em></h2>
+      <div class="video-grid">
+        <div>
+          <div class="video-wrap">
+            <div class="video-ph">
+              <div class="video-ph-icon"></div>
+              <div class="video-ph-text">YouTube embed — Ritmica Studios Mix</div>
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <div style="font-size:14px;font-weight:500;">2hr Studio Session · Miami</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:3px;">Ritmica Studios · Minimal Deep Tech House</div>
+          </div>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <div class="video-ph">
+              <div class="video-ph-icon"></div>
+              <div class="video-ph-text">YouTube embed — add more mixes here</div>
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <div style="font-size:14px;font-weight:500;">Mix Title</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:3px;">Venue / Event · Year</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stream -->
+  <div class="section">
+    <div class="wrap">
+      <div class="section-eyebrow" style="margin-bottom:16px;">Stream</div>
+      <div class="platform-row">
+        <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </a>
+        <a href="https://soundcloud.com/adambogdandj" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M11.56 8.87V17h-1.7V7h1.52l3.93 8.09V7h1.7v10h-1.52zm-6.5.03L6.56 17H4.84L3 7h1.72l1.2 6.95L7.1 7h1.47l1.19 6.95L10.96 7h1.72l-1.84 10H9.12zM22 7v1.5h-3v2.45h2.6V12H19v3.5h3V17h-4.7V7z"/></svg>
+          SoundCloud
+        </a>
+        <a href="https://www.beatport.com/artist/adam-bogdan/128861" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M1.008 0C.44 0 0 .453 0 1.01v21.98C0 23.549.453 24 1.008 24h21.984C23.551 24 24 23.547 24 22.99V1.01C24 .451 23.547 0 22.992 0zm12.56 5.532l2.15 3.72 2.148-3.72h2.335l-3.32 5.484 3.429 5.68h-2.354l-2.238-3.875-2.238 3.875H11.1l3.43-5.68-3.32-5.484zm-8.184.072h4.116c1.737 0 2.96 1.101 2.96 2.674 0 1.06-.546 1.875-1.39 2.282.985.37 1.624 1.265 1.624 2.418 0 1.741-1.303 2.898-3.16 2.898H5.383zm1.97 1.595v2.517h1.937c.73 0 1.183-.45 1.183-1.258 0-.79-.454-1.259-1.183-1.259zm0 4.073v2.813h2.133c.822 0 1.315-.489 1.315-1.406 0-.918-.493-1.407-1.315-1.407z"/></svg>
+          Beatport
+        </a>
+        <a href="https://www.youtube.com/@adambogdandj" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a href="https://www.beatport.com/label/raptures-deli/131250" class="platform-btn" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+          Rapture's Deli
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap" style="width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div class="footer-logo">Adam <em>Bogdan</em></div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home');return false;">Home</a>
+        <a href="#" onclick="showPage('about');return false;">About</a>
+        <a href="#" onclick="showPage('contact');return false;">Booking</a>
+      </div>
+      <div class="footer-copy">© 2025 Adam Bogdan · Miami, FL</div>
+    </div>
+  </footer>
+</div><!-- /music -->
+
+
+<!-- ══════════════════════════════════════════
+     GALLERY
+══════════════════════════════════════════ -->
+<div id="gallery" class="page">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-eyebrow">Photos</div>
+      <h1 class="section-title" style="margin-bottom:32px;"><em>Gallery</em></h1>
+      <div class="gallery-grid">
+        <div class="gallery-cell wide" style="grid-row:span 2;">
+          <span class="gallery-cell-ph">Press photo · large</span>
+          <!-- <img src="images/gallery-1.jpg" alt=""> -->
+        </div>
+        <div class="gallery-cell">
+          <span class="gallery-cell-ph">Live shot</span>
+        </div>
+        <div class="gallery-cell">
+          <span class="gallery-cell-ph">Studio</span>
+        </div>
+        <div class="gallery-cell">
+          <span class="gallery-cell-ph">Live shot</span>
+        </div>
+        <div class="gallery-cell wide">
+          <span class="gallery-cell-ph">Event photo · wide</span>
+        </div>
+        <div class="gallery-cell">
+          <span class="gallery-cell-ph">Press photo</span>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--faint);text-align:center;margin-top:20px;letter-spacing:0.06em;">For press use — high-res images available on request</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap" style="width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div class="footer-logo">Adam <em>Bogdan</em></div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home');return false;">Home</a>
+        <a href="#" onclick="showPage('contact');return false;">Booking</a>
+      </div>
+      <div class="footer-copy">© 2025 Adam Bogdan · Miami, FL</div>
+    </div>
+  </footer>
+</div><!-- /gallery -->
+
+
+<!-- ══════════════════════════════════════════
+     STORE
+══════════════════════════════════════════ -->
+<div id="store" class="page">
+  <div class="section">
+    <div class="wrap">
+      <div class="section-eyebrow">Merch</div>
+      <h1 class="section-title" style="margin-bottom:32px;"><em>Store</em></h1>
+      <div class="store-grid">
+        <div class="store-card">
+          <div class="store-img"><span class="store-img-ph">Product photo</span></div>
+          <div class="store-info">
+            <div class="store-name">Logo Tee</div>
+            <div class="store-price">$30.00</div>
+          </div>
+          <button class="store-btn">Add to Cart</button>
+        </div>
+        <div class="store-card">
+          <div class="store-img"><span class="store-img-ph">Product photo</span></div>
+          <div class="store-info">
+            <div class="store-name">Hoodie</div>
+            <div class="store-price">$65.00</div>
+          </div>
+          <button class="store-btn">Add to Cart</button>
+        </div>
+        <div class="store-card">
+          <div class="store-img"><span class="store-img-ph">Product photo</span></div>
+          <div class="store-info">
+            <div class="store-name">Cap</div>
+            <div class="store-price">$25.00</div>
+          </div>
+          <button class="store-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="store-note">
+        Store coming soon — merch items and checkout will be live shortly.<br>
+        <a href="#" onclick="showPage('contact');return false;" style="color:var(--text);border-bottom:1px solid var(--border);">Contact us</a> for custom orders or wholesale inquiries.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap" style="width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div class="footer-logo">Adam <em>Bogdan</em></div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home');return false;">Home</a>
+        <a href="#" onclick="showPage('contact');return false;">Booking</a>
+      </div>
+      <div class="footer-copy">© 2025 Adam Bogdan · Miami, FL</div>
+    </div>
+  </footer>
+</div><!-- /store -->
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<div id="contact" class="page">
+  <div class="section">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <div class="section-eyebrow">Get in Touch</div>
+          <h1 class="contact-heading">Booking<br><em>Inquiry</em></h1>
+          <p class="contact-subtext">For bookings, collaborations, and press inquiries — fill out the form below and we'll be in touch shortly.</p>
+          <form onsubmit="handleForm(event)">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input class="form-input" type="text" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input class="form-input" type="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Venue / Event</label>
+              <input class="form-input" type="text" placeholder="Venue name, city & date">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Tell us about the event, expected capacity, and any other details..."></textarea>
+            </div>
+            <button class="form-submit" type="submit">Send Inquiry →</button>
+          </form>
+          <div id="form-success" style="display:none;margin-top:16px;padding:14px;border:1px solid var(--border);border-radius:4px;font-size:13px;color:var(--muted);text-align:center;">
+            Message sent — we'll be in touch soon.
+          </div>
+        </div>
+
+        <div class="contact-sidebar">
+          <div class="sidebar-section">
+            <div class="sidebar-label">Social</div>
+            <a href="https://www.instagram.com/adambogdandj" class="social-link" target="_blank">
+              <span class="social-name">Instagram</span>
+              <span class="social-handle">@adambogdandj</span>
+            </a>
+            <a href="https://soundcloud.com/adambogdandj" class="social-link" target="_blank">
+              <span class="social-name">SoundCloud</span>
+              <span class="social-handle">adambogdan</span>
+            </a>
+            <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" class="social-link" target="_blank">
+              <span class="social-name">Spotify</span>
+              <span class="social-handle">Adam Bogdan</span>
+            </a>
+            <a href="https://www.beatport.com/artist/adam-bogdan/128861" class="social-link" target="_blank">
+              <span class="social-name">Beatport</span>
+              <span class="social-handle">Adam Bogdan</span>
+            </a>
+            <a href="https://www.youtube.com/@adambogdandj" class="social-link" target="_blank">
+              <span class="social-name">YouTube</span>
+              <span class="social-handle">Adam Bogdan DJ</span>
+            </a>
+          </div>
+
+          <div class="sidebar-section">
+            <div class="sidebar-label">Label</div>
+            <div class="label-card">
+              <div class="label-card-name">Rapture's <em style="font-family:var(--serif);font-style:italic;">Deli</em></div>
+              <div class="label-card-sub">Miami-based underground house label. Deep, groovy, and uncompromisingly underground.</div>
+              <a href="https://www.beatport.com/label/raptures-deli/131250" class="label-card-link" target="_blank">View on Beatport →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap" style="width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <div class="footer-logo">Adam <em>Bogdan</em></div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home');return false;">Home</a>
+        <a href="#" onclick="showPage('about');return false;">About</a>
+        <a href="#" onclick="showPage('music');return false;">Music</a>
+      </div>
+      <div class="footer-copy">© 2025 Adam Bogdan · Miami, FL</div>
+    </div>
+  </footer>
+</div><!-- /contact -->
+
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(a => {
+      if (a.getAttribute('onclick') && a.getAttribute('onclick').includes("'" + id + "'")) {
+        a.classList.add('active');
+      }
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  function handleForm(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.style.opacity = '0.4';
+    e.target.style.pointerEvents = 'none';
+  }
+</script>
+
+</body>
+</html>
