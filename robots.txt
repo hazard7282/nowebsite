@@ -1,0 +1,10 @@
+# robots.txt for adambogdan.com
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+
+Sitemap: https://adambogdan.com/sitemap.xml
