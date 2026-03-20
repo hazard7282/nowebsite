@@ -221,7 +221,22 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
 <div id="home" class="page active">
 <section class="hero">
 <div class="hero-left">
-<img class="hero-photo" src="hero-photo.jpg" alt="DJ Adam Bogdan Miami">
+<picture>
+  <source
+    type="image/webp"
+    srcset="hero-photo-400.webp 400w,
+            hero-photo-800.webp 800w,
+            hero-photo-1200.webp 1200w"
+    sizes="(max-width: 900px) 100vw, 45vw">
+  <img
+    class="hero-photo"
+    src="hero-photo-800.jpg"
+    srcset="hero-photo-400.jpg 400w,
+            hero-photo-800.jpg 800w,
+            hero-photo-1200.jpg 1200w"
+    sizes="(max-width: 900px) 100vw, 45vw"
+    alt="DJ Adam Bogdan Miami">
+</picture>
 <div class="hero-tint"></div>
 <div class="hero-left-content">
   <p class="hero-eyebrow">Miami, Florida · Rapture's Deli</p>
@@ -290,7 +305,21 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <p class="mix-label">Recent Mixes</p>
   <div class="mix-row">
 <a class="mix-card" href="https://www.youtube.com/watch?v=xab-uy6L4WM" target="_blank" rel="noopener">
-  <img src="crowd_1.jpg" alt="DJ Adam Bogdan Miami">
+  <picture>
+  <source
+    type="image/webp"
+    srcset="crowd_1-400.webp 400w,
+            crowd_1-800.webp 800w"
+    sizes="(max-width: 900px) 50vw, 25vw">
+  <img
+    src="crowd_1-800.jpg"
+    srcset="crowd_1-400.jpg 400w,
+            crowd_1-800.jpg 800w"
+    sizes="(max-width: 900px) 50vw, 25vw"
+    alt="DJ Adam Bogdan Miami">
+</picture>
+
+
   <div class="mix-overlay">
     <div class="mix-play"></div>
     <div class="mix-info">
@@ -300,7 +329,19 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   </div>
 </a>
 <a class="mix-card" href="https://soundcloud.com/adambogdandj/adam-bogdan-mix-miami-heat" target="_blank" rel="noopener">
-  <img src="crowd_2.jpg" alt="DJ Adam Bogdan Miami">
+  <picture>
+  <source
+    type="image/webp"
+    srcset="crowd_2-400.webp 400w,
+            crowd_2-800.webp 800w"
+    sizes="(max-width: 900px) 50vw, 25vw">
+  <img
+    src="crowd_2-800.jpg"
+    srcset="crowd_2-400.jpg 400w,
+            crowd_2-800.jpg 800w"
+    sizes="(max-width: 900px) 50vw, 25vw"
+    alt="DJ Adam Bogdan Miami">
+</picture>
   <div class="mix-overlay">
     <div class="mix-play"></div>
     <div class="mix-info">
