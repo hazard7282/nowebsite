@@ -25,8 +25,16 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Mixes page -->
   <url>
   <loc>https://adambogdan.com/mixes.html</loc>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+ </url>
+
+   <!-- Spotify curator page -->
+  <url>
+  <loc>https://adambogdan.com/spotify-curators.html</loc>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
  </url>
