@@ -4,39 +4,37 @@
   <!-- Homepage -->
   <url>
     <loc>https://adambogdan.com/</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-08-13</lastmod>
   </url>
 
-  <!-- Music / Releases page -->
+  <!-- DJ Mixes -->
   <url>
-    <loc>https://adambogdan.com/#music</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://adambogdan.com/mixes.html</loc>
+    <lastmod>2026-08-13</lastmod>
   </url>
 
-  <!-- Booking & Contact page -->
+  <!-- Blog -->
   <url>
-    <loc>https://adambogdan.com/#booking</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://adambogdan.com/blog.html</loc>
+    <lastmod>2026-08-13</lastmod>
   </url>
 
-  <!-- Mixes page -->
+  <!-- Spotify Curator -->
   <url>
-  <loc>https://adambogdan.com/mixes.html</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
- </url>
+    <loc>https://adambogdan.com/spotify-curators.html</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
 
-   <!-- Spotify curator page -->
+  <!-- Spotify Playlist Pitching -->
   <url>
-  <loc>https://adambogdan.com/spotify-curators.html</loc>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
- </url>
+    <loc>https://adambogdan.com/spotify-playlist-pitching-independent-artists.html</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
+
+  <!-- Spotify AI Artists / Suno -->
+  <url>
+    <loc>https://adambogdan.com/spotify-ai-artists-suno-ai-music-crackdown.html</loc>
+    <lastmod>2026-08-13</lastmod>
+  </url>
 
 </urlset>
