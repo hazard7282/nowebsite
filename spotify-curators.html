@@ -3,69 +3,53 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Spotify Playlist Curator | Adam Bogdan — Deep Tech & Minimal House Playlists on Spotify</title>
-<meta name="description" content="Adam Bogdan is an active Spotify, Youtube and Soundcloud playlist curator specializing in deep tech house, minimal house, and underground electronic music. Submit your tracks via PlaylistPush, SubmitHub, and Groover for playlist consideration."/>
-<meta name="keywords" content="Spotify playlist curator, deep tech, minimal house Spotify playlist,submit music to playlist, PlaylistPush curator, SubmitHub curator, Groover curator, underground house playlist, Miami DJ Spotify playlist, deep house playlist curator, tech house playlist, independent playlist curator, spotify music submission, Adam Bogdan playlist, house music curator Spotify, minimal techno playlist, underground electronic playlist, DJ curator Spotify, Miami house music playlist, submit deep tech track, playlist placement, spotify playlist promotion, independent curator, music blog curator, electronic music curator"/>
+<title>Spotify Playlist Curator & Music Submissions | Summerlandia</title>
+<meta name="description" content="Summerlandia is an independent Spotify playlist curated by DJ and producer Adam Bogdan, accepting electronic music submissions across deep tech, minimal house, rominimal, deep house and underground house. 7,000+ playlist saves and 2,500+ tracks reviewed."/>
+<meta name="keywords" content="Spotify playlist curator, independent Spotify playlist curator, Summerlandia Spotify playlist, electronic music playlist curator, submit music to Spotify playlist, Spotify curators accepting submissions, electronic music playlist submission, deep tech playlist submission, minimal house playlist submission, underground house playlist submission, deep house playlist submission, SubmitHub playlist curator, PlaylistPush curator, Groover playlist curator, independent artist playlist submission, Adam Bogdan curator"/>
 <link rel="canonical" href="https://adambogdan.com/spotify-curators.html"/>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
 <!-- JSON-LD structured data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "MusicPlaylist",
-  "name": "Adam Bogdan — Spotify Deep Tech & Minimal House Curator",
-  "description": "Spotify playlist curator for underground house, deep tech house, minimal house, and tech house music. Submit via PlaylistPush, SubmitHub, or Groover.",
-  "author": {
-    "@type": "Person",
-    "name": "Adam Bogdan",
-    "url": "https://adambogdan.com",
-    "sameAs": [
-      "https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN",
-      "https://www.instagram.com/adambogdandj",
-      "https://soundcloud.com/adambogdandj"
-    ]
-  }
+  "@graph": [
+    {
+      "@type": "MusicPlaylist",
+      "@id": "https://adambogdan.com/spotify-curators.html#summerlandia",
+      "name": "Summerlandia",
+      "url": "https://open.spotify.com/playlist/1TcOtmJ2FheGozNsYxPJ95",
+      "description": "Independent Spotify playlist focused on deep tech, minimal house, rominimal, deep house and underground electronic music.",
+      "author": {
+        "@id": "https://adambogdan.com/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://adambogdan.com/#person",
+      "name": "Adam Bogdan",
+      "url": "https://adambogdan.com/",
+      "jobTitle": [
+        "DJ",
+        "Music Producer",
+        "Record Label Founder",
+        "Independent Music Curator"
+      ],
+      "sameAs": [
+        "https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN",
+        "https://www.instagram.com/adambogdandj",
+        "https://soundcloud.com/adambogdandj",
+        "https://www.beatport.com/artist/adam-bogdan/128861"
+      ]
+    }
+  ]
 }
 </script>
 
 <style>
-@font-face {
-  font-family: 'DM Serif Display';
-  src: url('fonts/dm-serif-display-regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'DM Serif Display';
-  src: url('fonts/dm-serif-display-italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'DM Sans';
-  src: url('fonts/dm-sans-300.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'DM Sans';
-  src: url('fonts/dm-sans-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'DM Sans';
-  src: url('fonts/dm-sans-500.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0C090A;--surface:rgba(255,255,255,0.04);--surface-h:rgba(255,255,255,0.07);
   --border:rgba(255,255,255,0.09);--border-h:rgba(255,255,255,0.22);
@@ -111,6 +95,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);backgrou
 .intro-block p{font-size:14px;line-height:1.8;color:var(--muted)}
 .intro-block p strong{color:var(--text);font-weight:500}
 .intro-block p + p{margin-top:12px}
+
+
+/* ── CURATOR STATS ── */
+.curator-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.curator-stat{border:1px solid var(--accent-border);background:var(--accent-dim);border-radius:4px;padding:10px 14px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.curator-stat strong{color:var(--text);font-weight:500}
 
 /* ── SECTION LABEL ── */
 .section-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
@@ -231,8 +221,9 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#music">Music</a></li>
     <li><a href="mixes.html">Mixes</a></li>
+    <li><a href="blog.html">Blog</a></li>
     <li><a href="spotify-curators.html" class="active">Curator</a></li>
-    <li><a href="index.html#booking">Booking</a></li>
+    <li><a href="index.html#booking">Booking / Contact</a></li>
   </ul>
 </nav>
 <!-- ── MAIN ── -->
@@ -241,8 +232,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <!-- Header -->
   <div class="page-header">
 
-    <div class="sec-eyebrow">Adam Bogdan · Miami DJ &amp; Producer</div>
-    <h1 class="sec-title">Spotify <em>Curator</em></h1>
+    <div class="sec-eyebrow">Summerlandia · Independent Electronic Music Curation</div>
+    <h1 class="sec-title">Independent Spotify Playlist <em>Curator</em></h1>
 <!-- ── SOCIAL SIDEBAR ── -->
 <div class="social-sidebar">
   <a href="https://www.instagram.com/adambogdandj" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
@@ -252,16 +243,21 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <a href="https://adambogdandj.bandcamp.com" target="_blank" title="Bandcamp"><svg viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg></a>
   <a href="https://www.youtube.com/@adambogdandj" target="_blank" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
 </div>
-    <p class="sec-sub">Independent <strong>Spotify playlist curator</strong> for deep tech house, minimal house, and underground electronic music. Active on <strong>PlaylistPush</strong>, <strong>SubmitHub</strong>, and <strong>Groover</strong> — curating tracks that deserve floor time.</p>
+    <p class="sec-sub"><strong>Summerlandia</strong> is an independent Spotify playlist curated by DJ, producer and Rapture's Deli founder <strong>Adam Bogdan</strong>, focused on deep tech, minimal house, rominimal, deep house and underground electronic music.</p>
+    <div class="curator-stats">
+      <div class="curator-stat"><strong>7,000+</strong> Playlist Saves</div>
+      <div class="curator-stat"><strong>2,500+</strong> Tracks Reviewed</div>
+      <div class="curator-stat"><strong>20+ Years</strong> DJ Experience</div>
+    </div>
   </div>
 
   <!-- Intro SEO block -->
   <div class="intro-block">
     <p>
-      <strong>Adam Bogdan</strong> is a Miami-based DJ, producer, and independent Spotify playlist curator with over 20 years of experience in underground house music.Founder of the <strong>Rapture's Deli</strong> label and brand and a regular at venues like Mode Miami, Sylvester, Moxy Miami Beach or Fontainebleau. Adam's ear is trained on what works — on the floor and on a playlist.
+      <strong>Summerlandia</strong> is the curator identity behind Adam Bogdan's independent Spotify playlist activity. Adam is a Miami-based DJ, producer, label founder and music curator with more than 20 years in underground electronic music.
     </p>
     <p>
-      His curated Spotify playlists focus on <strong>deep tech house</strong>, <strong>minimal house</strong>, <strong>groovy underground house</strong>, and <strong>rominimal</strong> — the same sounds he plays and releases. If your track fits the vibe, submit via PlaylistPush, SubmitHub, or Groover below. Every submission is listened to.
+      The playlist focuses on <strong>deep tech</strong>, <strong>minimal house</strong>, <strong>rominimal</strong>, <strong>deep house</strong> and groove-driven <strong>underground house</strong>. With more than <strong>7,000 playlist saves</strong> and over <strong>2,500 music submissions reviewed</strong> across PlaylistPush, SubmitHub and Groover, the emphasis is on musical fit, production quality, originality and long-term playlist coherence.
     </p>
   </div>
 
@@ -277,7 +273,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
       <div class="platform-name">Playlist<em>Push</em></div>
       <div class="platform-role">Active Curator</div>
       <p class="platform-desc">
-        PlaylistPush connects artists with independent Spotify curators. Adam curates for <strong>deep tech house</strong>, <strong>minimal house</strong>, and <strong>underground electronic</strong> playlists on the platform. Submit your track for a paid, guaranteed listen and honest feedback.
+        PlaylistPush connects artists with independent Spotify curators. Adam curates for <strong>deep tech house</strong>, <strong>minimal house</strong>, and <strong>underground electronic</strong> playlists on the platform. Submit your track for curator consideration and feedback according to the platform&apos;s current process. Playlist placement is never guaranteed.
         <br><br>
         Best for: artists releasing on Beatport, Spotify, or independent labels looking for playlist placement in the underground house and minimal tech space.
       </p>
@@ -315,9 +311,9 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
       <p class="platform-desc">
         Groover is a European music promotion platform connecting artists to curators, labels, and media. Adam reviews submissions for <strong>Spotify playlist placement</strong>, <strong>SoundCloud repost</strong>, and potential release on <strong>Rapture's Deli</strong>.
         <br><br>
-        Particularly suited to European artists releasing deep tech, minimal, or underground house — Groover guarantees a response to every paid submission.
+        Particularly suited to European artists releasing deep tech, minimal, or underground house — Groover provides a response process for paid submissions according to its current platform rules.
       </p>
-      <a href="https://groover.co/en/influencer/profile/0.summerlandia/"_blank" rel="noopener" class="platform-link">
+      <a href="https://groover.co/en/influencer/profile/0.summerlandia/" target="_blank" rel="noopener" class="platform-link">
         Submit on Groover
         <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
@@ -330,8 +326,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <!-- Playlists -->
   <div class="playlists-header">
     <div class="sec-eyebrow">Curated Playlists</div>
-    <h2>Deep Tech &amp; <em>Minimal House</em><br>Spotify Playlists</h2>
-    <p>Underground-focused Spotify playlists curated by Adam Bogdan — regularly updated with new deep tech, minimal house, and groovy underground tracks. Follow to stay updated.</p>
+    <h2>Deep Tech, Minimal House &amp; <em>Rominimal</em><br>Spotify Playlist</h2>
+    <p>Summerlandia is curated by Adam Bogdan and regularly updated with deep tech, minimal house, rominimal, deep house and groove-driven underground electronic music.</p>
   </div>
 
   <div class="playlists-grid">
@@ -343,15 +339,15 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
       </div>
       <div class="playlist-info">
         <span class="playlist-genre-badge">Deep Tech House</span>
-        <div class="playlist-title">Deep <em>Selections</em></div>
-        <p class="playlist-desc">The core deep tech house and minimal house playlist. Hypnotic rhythms, long grooves, underground selections from Miami to Berlin. Updated weekly with new releases from Beatport and independent labels.</p>
+        <div class="playlist-title">Summer<em>landia</em></div>
+        <p class="playlist-desc">Independent Spotify playlist for deep tech, minimal house, rominimal, deep house and underground electronic music. Curated by Adam Bogdan with a focus on groove, originality and dancefloor relevance.</p>
         <div class="playlist-tags">
           <span class="playlist-tag">Deep Tech</span>
           <span class="playlist-tag">Minimal</span>
           <span class="playlist-tag">Underground</span>
           <span class="playlist-tag">Weekly Updates</span>
         </div>
-        <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" class="playlist-open">Open on Spotify →</a>
+        <a href="https://open.spotify.com/playlist/1TcOtmJ2FheGozNsYxPJ95" target="_blank" rel="noopener" class="playlist-open">Open Summerlandia on Spotify →</a>
       </div>
     </div>
 
@@ -376,14 +372,14 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <!-- How to Submit -->
   <div class="submit-section">
     <div class="sec-eyebrow">Getting Your Track Placed</div>
-    <h2>How to <em>Submit</em></h2>
-    <p>Three ways to get your deep tech, minimal house, or underground electronic track in front of Adam. All submissions are listened to personally.</p>
+    <h2>Submit Electronic Music to <em>Summerlandia</em></h2>
+    <p>Independent artists can submit deep tech, minimal house, rominimal, deep house, tech house and related underground electronic music for playlist consideration through PlaylistPush, SubmitHub or Groover.</p>
 
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-num">01</div>
         <div class="step-title">Choose Your Platform</div>
-        <p class="step-body">Submit via <a href="https://playlistpush.com" target="_blank">PlaylistPush</a>, <a href="https://www.submithub.com" target="_blank">SubmitHub</a>, or <a href="https://groover.co" target="_blank">Groover</a>. Each platform has its own submission flow — create a free account, upload your track link, and target Adam Bogdan as a curator.</p>
+        <p class="step-body">Submit via <a href="https://playlistpush.com" target="_blank">PlaylistPush</a>, <a href="https://www.submithub.com" target="_blank">SubmitHub</a>, or <a href="https://groover.co" target="_blank">Groover</a>. Each platform has its own submission flow — create a free account, upload your track link, and select Summerlandia / Adam Bogdan where available as a curator.</p>
       </div>
       <div class="step-card">
         <div class="step-num">02</div>
@@ -393,9 +389,15 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
       <div class="step-card">
         <div class="step-num">03</div>
         <div class="step-title">Get a Response</div>
-        <p class="step-body">Every paid submission on all three platforms receives a genuine response — either playlist placement with feedback, or a short honest note on why it wasn't the right fit. No ghost listens. Quality submissions may also be forwarded to <strong>Rapture's Deli</strong> for label consideration.</p>
+        <p class="step-body">Paid submissions are reviewed through the respective platform, with feedback or placement decisions handled according to each service&apos;s current process. Playlist placement is never guaranteed. Quality submissions may also be forwarded to <strong>Rapture's Deli</strong> for label consideration.</p>
       </div>
     </div>
+  </div>
+
+  <hr class="sec-divider">
+
+  <div class="intro-block" style="margin-bottom:56px;">
+    <p><strong>Looking for a broader Spotify playlist strategy?</strong> Read the practical guide to <a href="spotify-playlist-pitching-independent-artists.html" style="color:var(--accent);border-bottom:1px solid var(--accent-border);">Spotify playlist pitching for independent artists</a>, including editorial pitching, independent curators, SubmitHub, PlaylistPush and Groover.</p>
   </div>
 
   <hr class="sec-divider">
@@ -403,7 +405,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <!-- SEO text block -->
   <div class="seo-block">
     <div class="sec-eyebrow">About the Curator</div>
-    <h2>Independent Spotify Curator:<br><em>Deep Tech &amp; Minimal House</em></h2>
+    <h2>Independent Spotify Playlist Curator:<br><em>Electronic Music &amp; Submissions</em></h2>
 
     <h3>Who Is Adam Bogdan as a Spotify Curator?</h3>
     <p>
@@ -415,7 +417,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
 
     <h3>What Genres Does This Curator Accept?</h3>
     <p>
-      Adam Bogdan's Spotify playlists cover the following genres: <strong>deep tech house</strong>, <strong>minimal tech house</strong>, <strong>deep house</strong>, <strong>underground house</strong>, <strong>groovy house</strong>, <strong>dub house</strong>, <strong>vocal house</strong>, <strong>rominimal</strong>, and <strong>Romanian minimal</strong>. BPM range is typically 118–128. If your track could fit a late-night underground set in Miami or a basement club in Berlin, it belongs here.
+      Summerlandia and Adam Bogdan's related curation focus on the following genres: <strong>deep tech house</strong>, <strong>minimal tech house</strong>, <strong>deep house</strong>, <strong>underground house</strong>, <strong>groovy house</strong>, <strong>dub house</strong>, <strong>vocal house</strong>, <strong>rominimal</strong>, and <strong>Romanian minimal</strong>. BPM range is typically 118–128. If your track could fit a late-night underground set in Miami or a basement club in Berlin, it belongs here.
     </p>
 
     <h3>Submitting via PlaylistPush, SubmitHub &amp; Groover</h3>
@@ -435,12 +437,47 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
     </p>
   </div>
 
+  <hr class="sec-divider">
+
+  <div class="seo-block" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="sec-eyebrow">Spotify Playlist Submission FAQ</div>
+    <h2>Independent Curator <em>FAQ</em></h2>
+
+    <h3 itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+      <span itemprop="name">Who curates the Summerlandia Spotify playlist?</span>
+    </h3>
+    <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+      <span itemprop="text">Summerlandia is independently curated by Adam Bogdan, a Miami-based DJ, producer and founder of Rapture's Deli. Summerlandia is a curator identity and playlist, separate from Adam Bogdan's Spotify artist profile.</span>
+    </p>
+
+    <h3 itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+      <span itemprop="name">How do I submit music to Summerlandia?</span>
+    </h3>
+    <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+      <span itemprop="text">Music can be submitted for consideration through PlaylistPush, SubmitHub or Groover. The main focus is deep tech, minimal house, rominimal, deep house, tech house and related underground electronic music.</span>
+    </p>
+
+    <h3 itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+      <span itemprop="name">Is Summerlandia an official Spotify editorial playlist?</span>
+    </h3>
+    <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+      <span itemprop="text">No. Summerlandia is an independent Spotify playlist. Adam Bogdan is not employed by Spotify and does not curate Spotify's official editorial playlists.</span>
+    </p>
+
+    <h3 itemprop="mainEntity" itemscope itemtype="https://schema.org/Question">
+      <span itemprop="name">Does submitting guarantee Spotify playlist placement?</span>
+    </h3>
+    <p itemprop="acceptedAnswer" itemscope itemtype="https://schema.org/Answer">
+      <span itemprop="text">No. Submission provides consideration according to the rules of the platform used. Playlist placement is never guaranteed and depends on musical fit, production quality and the existing direction of the playlist.</span>
+    </p>
+  </div>
+
 </div>
 <!-- /page-wrap -->
 
 <footer>
   <a href="index.html" class="footer-logo">Adam <em>Bogdan</em></a>
-  <div class="footer-copy">© 2026 Adam Bogdan · Miami, FL · Spotify Curator</div>
+  <div class="footer-copy">© 2026 Adam Bogdan · Summerlandia · Independent Spotify Curator</div>
 </footer>
 
 </body>
