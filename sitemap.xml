@@ -1,40 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Homepage -->
   <url>
     <loc>https://adambogdan.com/</loc>
-    <lastmod>2026-08-13</lastmod>
   </url>
-
-  <!-- DJ Mixes -->
-  <url>
-    <loc>https://adambogdan.com/mixes.html</loc>
-    <lastmod>2026-08-13</lastmod>
-  </url>
-
-  <!-- Blog -->
-  <url>
-    <loc>https://adambogdan.com/blog.html</loc>
-    <lastmod>2026-08-13</lastmod>
-  </url>
-
-  <!-- Spotify Curator -->
   <url>
     <loc>https://adambogdan.com/spotify-curators.html</loc>
-    <lastmod>2026-08-13</lastmod>
   </url>
-
-  <!-- Spotify Playlist Pitching -->
+  <url>
+    <loc>https://adambogdan.com/mixes.html</loc>
+  </url>
+  <url>
+    <loc>https://adambogdan.com/blog.html</loc>
+  </url>
   <url>
     <loc>https://adambogdan.com/spotify-playlist-pitching-independent-artists.html</loc>
-    <lastmod>2026-08-13</lastmod>
   </url>
-
-  <!-- Spotify AI Artists / Suno -->
   <url>
     <loc>https://adambogdan.com/spotify-ai-artists-suno-ai-music-crackdown.html</loc>
-    <lastmod>2026-08-13</lastmod>
   </url>
-
+  <url>
+    <loc>https://adambogdan.com/miami-minimal-deep-tech.html</loc>
+  </url>
 </urlset>
