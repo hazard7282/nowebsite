@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Adam Bogdan DJ & Producer | Deep Tech, Minimal House, Rominimal</title>
-<meta name="description" content="Official website of Adam Bogdan, DJ, producer and Rapture's Deli founder. Deep tech, minimal house and rominimal releases, DJ sets, Beatport chart appearances and international bookings."/>
-<meta property="og:title" content="Adam Bogdan DJ & Producer | Deep Tech, Minimal House, Rominimal"/>
-<meta property="og:description" content="Official website of Adam Bogdan, DJ, producer and Rapture's Deli founder. Deep tech, minimal house and rominimal releases, DJ sets, Beatport chart appearances and worldwide bookings."/>
+<title>DJ Adam Bogdan |Deep Tech, Deep house, Minimal, Rominimal DJ · Miami</title>
+<meta name="description" content="Adam Bogdan is a deep tech and minimal house DJ and producer known for underground electronic music and groove house mixes. All music is human-made, with no generative AI tools. Explore mixes, tracks, and releases, and book Adam Bogdan for clubs, festivals, and events worldwide."/>
+<meta property="og:description" content="Official website of DJ and producer Adam Bogdan. Deep tech, minimal house and tech house. Founder of Rapture's Deli. Releases on Beatport and Bandcamp. Miami bookings."/>
+<meta property="og:description" content="Electronic music artist focused on deep tech and rominimal. Human-made music, no AI generation. Listen to mixes and explore releases."/>
+<meta property="og:title" content="Adam Bogdan – Deep Tech & Minimal House DJ & Producer"/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://adambogdan.com/"/>
+<meta property="og:url" content="https://adambogdan.com"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link rel="canonical" href="https://adambogdan.com/"/>
+<link rel="canonical" href="https://adambogdan.com"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -35,8 +36,7 @@
         "Deep Tech",
         "Minimal House",
         "Tech House",
-        "Rominimal",
-        "Underground Music",
+        "Underground House",
         "Electronic Music Production"
       ],
       "homeLocation": {
@@ -68,8 +68,7 @@
         "Deep Tech",
         "Minimal House",
         "Tech House",
-        "Rominimal",
-        "Underground Music"
+        "Underground House"
       ],
       "foundingLocation": {
         "@type": "Place",
@@ -166,8 +165,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);backgrou
 .hero{display:grid;grid-template-columns:45% 55%;min-height:calc(100vh - var(--nav-h))}
 .hero-left{position:relative;overflow:hidden;background:#1a1210}
 .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.68;filter:grayscale(20%) contrast(1.05)}
+transform: scale(0.9);;opacity:.68;filter:grayscale(20%) contrast(1.05)}
 .hero-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(150,35,22,.52) 0%,rgba(12,9,10,.25) 55%,transparent 100%)}
-.hero-left-content{position:relative;z-index:2;padding:40px 28px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;animation:fadeUp .8s .1s both}
+.hero-left-content{position:relative;z-index:2;padding:56px 52px;display:flex;flex-direction:column;justify-content:flex-end;height:100%;animation:fadeUp .8s .1s both}
+.hero-left-content{padding:40px 28px}
 .hero-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px}
 .hero-title{font-family:var(--serif);font-size:clamp(60px,7.5vw,110px);line-height:.9;letter-spacing:-.025em;color:#fff;margin-bottom:20px}
 .hero-title em{font-style:italic}
@@ -309,14 +310,14 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
 </head>
 <body>
 <nav>
-  <a href="#home" class="nav-logo" onclick="showPage('home'); return false;">Adam <em>Bogdan</em></a>
+  <div></div>
   <ul class="nav-links">
-    <li><a id="nav-home" href="#home" class="active" onclick="showPage('home'); return false;">Home</a></li>
-    <li><a id="nav-music" href="#music" onclick="showPage('music'); return false;">Music</a></li>
+    <li><a id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
+    <li><a id="nav-music" onclick="showPage('music')">Music</a></li>
     <li><a id="nav-mixes" href="mixes.html">Mixes</a></li>
-    <li><a id="nav-blog" href="blog.html">Blog</a></li>
-    <li><a id="nav-curator" href="spotify-curators.html">Curator</a></li>
-    <li><a id="nav-booking" href="#booking" onclick="showPage('booking'); return false;">Booking/Contact</a></li>
+	<li><a id="nav-blog" href="blog.html">Blog</a></li> 
+    <li><a id="nav-curator" href="spotify-curators.html" class="active">Curator</a></li>
+    <li><a id="nav-booking" onclick="showPage('booking')">Booking/Contact</a></li>
   </ul>
 </nav>
 
@@ -337,9 +338,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
             hero-photo-800.jpg 800w,
             hero-photo-1200.jpg 1200w"
     sizes="(max-width: 900px) 100vw, 45vw"
-    alt="DJ Adam Bogdan Miami"
-    fetchpriority="high"
-    decoding="async">
+    alt="DJ Adam Bogdan Miami">
 </picture>
 <div class="hero-tint"></div>
 <div class="hero-left-content">
@@ -347,15 +346,16 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   <h1 class="hero-title">Adam<br><em>Bogdan</em></h1>
   <p class="hero-sub">DJ · Producer · Label Founder</p>
   <div class="social-sidebar">
-  <a href="https://www.instagram.com/adambogdandj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
-  <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Spotify</a>
-  <a href="https://www.beatport.com/artist/adam-bogdan/128861" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v3.277A3.49 3.49 0 0 0 9 13.5C9 15.43 10.57 17 12.5 17S16 15.43 16 13.5c0-1.717-1.24-3.144-2.877-3.441L13 10V7h-2zm1 5c.827 0 1.5.673 1.5 1.5S12.827 15 12 15s-1.5-.673-1.5-1.5S11.173 12 12 12z"/></svg>Beatport</a>
-  <a href="https://adambogdandj.bandcamp.com" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg>Bandcamp</a>
-  <a href="https://music.apple.com/search?term=adam+bogdan" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a4.93 4.93 0 0 0-.368 1.57c-.05.51-.057 1.02-.06 1.532-.002.35 0 .697 0 1.047V16.5c0 .37.006.743.022 1.112.03.795.124 1.58.49 2.297.28.548.67 1.001 1.154 1.384.635.502 1.366.79 2.15.943.49.095.988.13 1.49.15.35.012.7.016 1.05.016h12c.37 0 .74-.007 1.11-.02.8-.03 1.584-.115 2.303-.48.55-.278 1.002-.67 1.385-1.155.5-.633.79-1.36.943-2.148.1-.5.13-1.003.15-1.507.013-.35.016-.7.016-1.05V6.124zm-6.498 1.557a.706.706 0 0 1-.718.706.706.706 0 0 1-.706-.706v-2.23l-5.6 1.38v5.81c0 .04-.004.082-.01.122a1.8 1.8 0 0 1-1.794 1.644 1.8 1.8 0 0 1-1.8-1.8 1.8 1.8 0 0 1 1.8-1.8c.277 0 .54.066.773.18V5.55a.706.706 0 0 1 .545-.688l6.97-1.717a.706.706 0 0 1 .868.688l-.328 3.848z"/></svg>Apple Music</a>
-  <a href="https://www.youtube.com/@adambogdandj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>YouTube</a>
-  <a href="https://soundcloud.com/adambogdandj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M1.175 12.225c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11L.02 15.503a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.162a.127.127 0 0 0-.12-.175zm2.05-.899c-.017 0-.034.002-.05.006a.173.173 0 0 0-.125.11l-1.285 4.15a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .125-.11l1.285-4.15a.127.127 0 0 0-.12-.175zm2.05.45c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.163a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zm1.8-.9c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.163a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zm2.05.45c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.162a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zM11.5 9c-.276 0-.5.224-.5.5v6c0 .276.224.5.5.5s.5-.224.5-.5v-6c0-.276-.224-.5-.5-.5zm2 0c-.276 0-.5.224-.5.5v6c0 .276.224.5.5.5s.5-.224.5-.5v-6c0-.276-.224-.5-.5-.5zm2.5 1.5c-.276 0-.5.224-.5.5v4c0 .276.224.5.5.5s.5-.224.5-.5v-4c0-.276-.224-.5-.5-.5zm2.5-.5c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5s.5-.224.5-.5v-5c0-.276-.224-.5-.5-.5zm2.5 1c-.276 0-.5.224-.5.5v3c0 .276.224.5.5.5s.5-.224.5-.5v-3c0-.276-.224-.5-.5-.5z"/></svg>SoundCloud</a>
+  <a href="https://www.instagram.com/adambogdandj" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
+  <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>Spotify</a>
+  <a href="https://www.beatport.com/artist/adam-bogdan/128861" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10S2 17.514 2 12 6.486 2 12 2zm-1 5v3.277A3.49 3.49 0 0 0 9 13.5C9 15.43 10.57 17 12.5 17S16 15.43 16 13.5c0-1.717-1.24-3.144-2.877-3.441L13 10V7h-2zm1 5c.827 0 1.5.673 1.5 1.5S12.827 15 12 15s-1.5-.673-1.5-1.5S11.173 12 12 12z"/></svg>Beatport</a>
+  <a href="https://adambogdandj.bandcamp.com" target="_blank"><svg viewBox="0 0 24 24"><path d="M0 18.75l7.437-13.5H24l-7.438 13.5z"/></svg>Bandcamp</a>
+  <a href="https://music.apple.com/search?term=adam+bogdan" target="_blank"><svg viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a4.93 4.93 0 0 0-.368 1.57c-.05.51-.057 1.02-.06 1.532-.002.35 0 .697 0 1.047V16.5c0 .37.006.743.022 1.112.03.795.124 1.58.49 2.297.28.548.67 1.001 1.154 1.384.635.502 1.366.79 2.15.943.49.095.988.13 1.49.15.35.012.7.016 1.05.016h12c.37 0 .74-.007 1.11-.02.8-.03 1.584-.115 2.303-.48.55-.278 1.002-.67 1.385-1.155.5-.633.79-1.36.943-2.148.1-.5.13-1.003.15-1.507.013-.35.016-.7.016-1.05V6.124zm-6.498 1.557a.706.706 0 0 1-.718.706.706.706 0 0 1-.706-.706v-2.23l-5.6 1.38v5.81c0 .04-.004.082-.01.122a1.8 1.8 0 0 1-1.794 1.644 1.8 1.8 0 0 1-1.8-1.8 1.8 1.8 0 0 1 1.8-1.8c.277 0 .54.066.773.18V5.55a.706.706 0 0 1 .545-.688l6.97-1.717a.706.706 0 0 1 .868.688l-.328 3.848z"/></svg>Apple Music</a>
+  <a href="https://www.youtube.com/@adambogdandj" target="_blank"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>YouTube</a>
+  <a href="https://soundcloud.com/adambogdandj" target="_blank"><svg viewBox="0 0 24 24"><path d="M1.175 12.225c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11L.02 15.503a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.162a.127.127 0 0 0-.12-.175zm2.05-.899c-.017 0-.034.002-.05.006a.173.173 0 0 0-.125.11l-1.285 4.15a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .125-.11l1.285-4.15a.127.127 0 0 0-.12-.175zm2.05.45c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.163a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zm1.8-.9c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.163a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zm2.05.45c-.017 0-.034.002-.05.006a.173.173 0 0 0-.124.11l-.98 3.162a.127.127 0 0 0 .12.175c.017 0 .034-.002.05-.006a.173.173 0 0 0 .124-.11l.98-3.163a.127.127 0 0 0-.12-.175zM11.5 9c-.276 0-.5.224-.5.5v6c0 .276.224.5.5.5s.5-.224.5-.5v-6c0-.276-.224-.5-.5-.5zm2 0c-.276 0-.5.224-.5.5v6c0 .276.224.5.5.5s.5-.224.5-.5v-6c0-.276-.224-.5-.5-.5zm2.5 1.5c-.276 0-.5.224-.5.5v4c0 .276.224.5.5.5s.5-.224.5-.5v-4c0-.276-.224-.5-.5-.5zm2.5-.5c-.276 0-.5.224-.5.5v5c0 .276.224.5.5.5s.5-.224.5-.5v-5c0-.276-.224-.5-.5-.5zm2.5 1c-.276 0-.5.224-.5.5v3c0 .276.224.5.5.5s.5-.224.5-.5v-3c0-.276-.224-.5-.5-.5z"/></svg>SoundCloud</a>
 <button class="btn-explore" onclick="showPage('music')">Explore Music</button>
 </div>
+  <div id="home" class="page active"></div>
   <p class="hero-sub">Deep Tech <span>·</span> Minimal House <span>·</span> Rominimal <span>·</span> Tech House</p>
   
 </div>
@@ -413,11 +413,10 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
   width="100%"
   height="400"
   frameBorder="0"
-  loading="lazy"
-  title="Adam Bogdan on Spotify"
   style="width:100%;display:block"
   allow="encrypted-media">
 </iframe>
+   </iframe>
   </div>
   <p class="mix-label">Recent Mixes</p>
   <div class="mix-row">
@@ -653,8 +652,18 @@ Rapture's Deli is a Miami-based underground electronic music label founded by Ad
   <hr class="sec-divider">
 
   <div class="sec-eyebrow">From the Blog</div>
-  <h2 class="sec-title">DJ, Music Business & <em>Independent Artist Insights</em></h2>
+  <h2>DJ, Music Business & <em>Independent Artist Insights</em></h2>
   <div class="blog-grid">
+<a href="miami-minimal-deep-tech.html" class="blog-card" style="display:block">
+  <div class="blog-tag">Miami Scene · Minimal / Deep Tech</div>
+  <h3 class="blog-title">
+    Miami Minimal &amp; <em>Deep Tech:</em> The Underground Scene
+  </h3>
+  <p class="blog-body">
+    A local guide to Miami minimal, deep tech and rominimal — Rapture's Deli, underground lineups, live sets and where to hear the sound.
+  </p>
+</a>
+
    <a href="spotify-ai-artists-suno-ai-music-crackdown.html" class="blog-card" style="display:block">
   <div class="blog-tag">Streaming Industry · AI Music</div>
   <h3 class="blog-title">
@@ -674,8 +683,6 @@ Rapture's Deli is a Miami-based underground electronic music label founded by Ad
     How Spotify playlist placement works, why editorial playlists are difficult to crack, and how independent artists can use SubmitHub, PlaylistPush and Groover strategically without wasting their promotion budget.
   </p>
 </a>
-  </div>
-</div>
 <footer>
   <div class="footer-logo">Adam <em>Bogdan</em></div>
   <div class="footer-copy">© 2026 Adam Bogdan · Miami, FL</div>
@@ -713,16 +720,16 @@ Rapture's Deli is a Miami-based underground electronic music label founded by Ad
     </div>
     <div>
       <div class="sidebar-label">Social &amp; Streaming</div>
-      <a href="https://www.instagram.com/adambogdandj" class="social-row" target="_blank" rel="noopener"><span class="social-name">Instagram</span><span class="social-handle">@adambogdandj →</span></a>
-      <a href="https://soundcloud.com/adambogdandj" class="social-row" target="_blank" rel="noopener"><span class="social-name">SoundCloud</span><span class="social-handle">adambogdandj →</span></a>
-      <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" class="social-row" target="_blank" rel="noopener"><span class="social-name">Spotify</span><span class="social-handle">Adam Bogdan →</span></a>
-      <a href="https://www.beatport.com/artist/adam-bogdan/128861" class="social-row" target="_blank" rel="noopener"><span class="social-name">Beatport</span><span class="social-handle">Adam Bogdan →</span></a>
-      <a href="https://adambogdandj.bandcamp.com" class="social-row" target="_blank" rel="noopener"><span class="social-name">Bandcamp</span><span class="social-handle">adambogdandj →</span></a>
-      <a href="https://music.apple.com/search?term=adam+bogdan" class="social-row" target="_blank" rel="noopener"><span class="social-name">Apple Music</span><span class="social-handle">Adam Bogdan →</span></a>
-      <a href="https://www.youtube.com/@adambogdandj" class="social-row" target="_blank" rel="noopener"><span class="social-name">YouTube</span><span class="social-handle">@adambogdandj →</span></a>
+      <a href="https://www.instagram.com/adambogdandj" class="social-row" target="_blank"><span class="social-name">Instagram</span><span class="social-handle">@adambogdandj →</span></a>
+      <a href="https://soundcloud.com/adambogdandj" class="social-row" target="_blank"><span class="social-name">SoundCloud</span><span class="social-handle">adambogdandj →</span></a>
+      <a href="https://open.spotify.com/artist/5cT9R3VII66FM1oOzQCCsN" class="social-row" target="_blank"><span class="social-name">Spotify</span><span class="social-handle">Adam Bogdan →</span></a>
+      <a href="https://www.beatport.com/artist/adam-bogdan/128861" class="social-row" target="_blank"><span class="social-name">Beatport</span><span class="social-handle">Adam Bogdan →</span></a>
+      <a href="https://adambogdandj.bandcamp.com" class="social-row" target="_blank"><span class="social-name">Bandcamp</span><span class="social-handle">adambogdandj →</span></a>
+      <a href="https://music.apple.com/search?term=adam+bogdan" class="social-row" target="_blank"><span class="social-name">Apple Music</span><span class="social-handle">Adam Bogdan →</span></a>
+      <a href="https://www.youtube.com/@adambogdandj" class="social-row" target="_blank"><span class="social-name">YouTube</span><span class="social-handle">@adambogdandj →</span></a>
       <div class="sidebar-label">Label</div>
-      <a href="https://www.beatport.com/label/raptures-deli/131250" class="social-row" target="_blank" rel="noopener"><span class="social-name">Rapture's Deli</span><span class="social-handle">Beatport →</span></a>
-      <a href="https://adambogdandj.bandcamp.com" class="social-row" target="_blank" rel="noopener"><span class="social-name">Rapture's Deli</span><span class="social-handle">Bandcamp →</span></a>
+      <a href="https://www.beatport.com/label/raptures-deli/131250" class="social-row" target="_blank"><span class="social-name">Rapture's Deli</span><span class="social-handle">Beatport →</span></a>
+      <a href="https://adambogdandj.bandcamp.com" class="social-row" target="_blank"><span class="social-name">Rapture's Deli</span><span class="social-handle">Bandcamp →</span></a>
     </div>
   </div>
 </div>
@@ -733,48 +740,25 @@ Rapture's Deli is a Miami-based underground electronic music label founded by Ad
 </footer>
 </div>
 <script>
-function showPage(id, updateHash) {
+function showPage(id) {
   document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
   document.querySelectorAll('.nav-links a').forEach(function(a){ a.classList.remove('active'); });
-
   var page = document.getElementById(id);
-  if (!page) return;
-
-  page.classList.add('active');
-
+  if (page) page.classList.add('active');
   var map = { home: 'nav-home', music: 'nav-music', booking: 'nav-booking' };
   var navEl = document.getElementById(map[id]);
   if (navEl) navEl.classList.add('active');
-
-  if (updateHash !== false) {
-    history.replaceState(null, '', id === 'home' ? '#home' : '#' + id);
-  }
-
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-function loadPageFromHash() {
-  var id = window.location.hash.replace('#', '');
-  if (id === 'music' || id === 'booking' || id === 'home') {
-    showPage(id, false);
-  } else {
-    showPage('home', false);
-  }
-}
-
 function toggleFaq(el) {
   el.parentElement.classList.toggle('open');
 }
-
 function handleForm(e) {
   e.preventDefault();
   document.getElementById('form-success').style.display = 'block';
   e.target.style.opacity = '0.4';
   e.target.style.pointerEvents = 'none';
 }
-
-window.addEventListener('DOMContentLoaded', loadPageFromHash);
-window.addEventListener('hashchange', loadPageFromHash);
 </script>
 </body>
 </html>
