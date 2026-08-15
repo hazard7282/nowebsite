@@ -3,10 +3,37 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>DJ Mixes | Adam Bogdan — Deep Tech & Minimal Groovy House</title>
-<meta name="description" content="Listen to DJ mixes and sets by Adam Bogdan. Deep tech, minimal house, groovy house, and rominimal mixes on YouTube and SoundCloud 2026. Miami deep house DJ."/>
-<meta name="keywords" content="Adam Bogdan DJ mix, DJ set, deep tech mix, minimal house mix, tech house mix, Miami DJ mix, rominimal, underground house mix"/>
+<title>Deep Tech & Minimal House DJ Mixes | Adam Bogdan</title>
+<meta name="description" content="Listen to deep tech, minimal house and rominimal DJ mixes by Adam Bogdan. Live sets and underground electronic music from Miami on YouTube and SoundCloud."/>
+<meta name="keywords" content="Adam Bogdan DJ mix, deep tech DJ mix, minimal house DJ set, rominimal DJ mix, underground house mix, Miami deep tech DJ, live DJ set, deep house DJ mix"/>
 <link rel="canonical" href="https://adambogdan.com/mixes.html"/>
+
+<meta property="og:title" content="Deep Tech & Minimal House DJ Mixes | Adam Bogdan"/>
+<meta property="og:description" content="Deep tech, minimal house, rominimal and underground DJ mixes and live sets by Adam Bogdan from Miami."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://adambogdan.com/mixes.html"/>
+<meta property="og:image" content="https://adambogdan.com/hero-photo-800.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Deep Tech & Minimal House DJ Mixes | Adam Bogdan"/>
+<meta name="twitter:description" content="Live deep tech, minimal house, rominimal and underground DJ sets by Adam Bogdan."/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://adambogdan.com/mixes.html#collection",
+  "url": "https://adambogdan.com/mixes.html",
+  "name": "Deep Tech & Minimal House DJ Mixes by Adam Bogdan",
+  "description": "A collection of DJ mixes and live sets by Adam Bogdan spanning deep tech, minimal house, rominimal, deep house and underground electronic music.",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://adambogdan.com/#person",
+    "name": "Adam Bogdan",
+    "url": "https://adambogdan.com/"
+  }
+}
+</script>
+
 
 <style>
   @font-face {
@@ -124,6 +151,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav-h);backgrou
 .add-icon{font-size:28px;color:var(--faint)}
 .add-text{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 
+
+/* ── MIXES ABOUT ── */
+.mixes-about{border-top:1px solid var(--border);margin-top:64px;padding-top:40px;max-width:760px}
+.mixes-about h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,40px);line-height:1.05;letter-spacing:-.02em;margin-bottom:16px}
+.mixes-about h2 em{font-style:italic}
+.mixes-about p{font-size:14px;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:14px}
+.mixes-about a{color:var(--text);border-bottom:1px solid var(--border-h)}
+
 /* ── DIVIDER ── */
 .sec-divider{border:none;border-top:1px solid var(--border);margin:64px 0}
 
@@ -164,8 +199,9 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#music">Music</a></li>
     <li><a href="mixes.html" class="active">Mixes</a></li>
-    <li><a href="spotify-curators.html" class="active">Curator</a></li>
-    <li><a href="index.html#booking">Booking &amp; Contact</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="spotify-curators.html">Curator</a></li>
+    <li><a href="index.html#booking">Booking / Contact</a></li>
   </ul>
 </nav>
 
@@ -185,9 +221,9 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
 
   <!-- Header -->
   <div class="page-header">
-    <div class="sec-eyebrow">Adam Bogdan</div>
-    <h1 class="sec-title">DJ <em>Mixes</em></h1>
-    <p class="sec-sub">Deep tech, minimal house and tech house sets from the studio and the dancefloor. Updated regularly.</p>
+    <div class="sec-eyebrow">Adam Bogdan · DJ Sets & Live Mixes</div>
+    <h1 class="sec-title">Deep Tech &amp; Minimal House <em>DJ Mixes</em></h1>
+    <p class="sec-sub">DJ mixes and live sets by Adam Bogdan spanning deep tech, minimal house, rominimal, deep house and underground house — recorded in Miami studios, radio stations and live environments.</p>
   </div>
 
   <!-- Filter tabs -->
@@ -198,6 +234,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
     <button class="filter-btn" onclick="filterMixes('deep-tech', this)">Deep Tech</button>
     <button class="filter-btn" onclick="filterMixes('minimal', this)">Minimal House</button>
     <button class="filter-btn" onclick="filterMixes('tech-house', this)">Tech House</button>
+    <button class="filter-btn" onclick="filterMixes('deep-house', this)">Deep House</button>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -229,28 +266,22 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
         <div class="mix-title"><em>Live Set</em> — Ritmica Studios Miami</div>
         <div class="mix-meta">
           <span>2025</span>
-          <span>Minimal · Deep Tech 2026 · Rominimal</span>
+          <span>Minimal · Deep Tech · Rominimal</span>
         </div>
         <div class="mix-tags">
           <span class="mix-tag">Deep Tech</span>
           <span class="mix-tag">Minimal House</span>
           <span class="mix-tag">Live</span>
         </div>
-        <a href="https://www.youtube.com/watch?v=xab-uy6L4WM" target="_blank" class="mix-link">Watch on YouTube →</a>
+        <a href="https://www.youtube.com/watch?v=xab-uy6L4WM" target="_blank" rel="noopener" class="mix-link">Watch on YouTube →</a>
       </div>
     </div>
 
-    <!-- ── MIX 2 — SoundCloud ──────────────────────────────────────────────
-         HOW TO ADD A SOUNDCLOUD MIX:
-         1. For thumbnail, use your own photo (see img src below) or
-            get the artwork URL from SoundCloud's share embed code
-         2. href: full SoundCloud URL
-         3. Update title, date, duration, tags
-    ──────────────────────────────────────────────────────────────────────── -->
-    <div class="mix-card" data-platform="soundcloud" data-tags="tech-house minimal">
+    <!-- ── MIX 2 — SoundCloud ── -->
+    <div class="mix-card" data-platform="soundcloud" data-tags="deep-tech tech-house deep-house minimal">
       <div class="mix-thumb">
-       <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2283757004&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/adambogdandj" title="Adam Bogdan" target="_blank" style="color: #cccccc; text-decoration: none;">Adam Bogdan</a> · <a href="https://soundcloud.com/adambogdandj/adam-bogdan-mix-miami-heat" title="Adam Bogdan mix— Miami Heat | Deep Tech Dance Floor Minimal Groove| MMW 2026" target="_blank" style="color: #cccccc; text-decoration: none;">Adam Bogdan mix— Miami Heat | Deep Tech Dance Floor Minimal Groove| MMW 2026</a></div>
-         
+        <a href="https://soundcloud.com/adambogdandj/adam-bogdan-mix-miami-heat" target="_blank" rel="noopener" aria-label="Listen to Miami Heat mix on SoundCloud">
+          <img src="crowd_2-800.webp" alt="Adam Bogdan Miami Heat deep tech DJ mix on SoundCloud" loading="lazy">
           <div class="mix-thumb-overlay">
             <div class="mix-play"></div>
           </div>
@@ -258,17 +289,17 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
         </a>
       </div>
       <div class="mix-info">
-        <div class="mix-title">Miami <em>Heat</em> Mix</div>
+        <div class="mix-title">Miami <em>Heat</em> — MMW 2026</div>
         <div class="mix-meta">
-          <span>2025</span>
-          <span>Tech House · Deep Tech 2026</span>
+          <span>2026</span>
+          <span>Deep Tech · Groove House · Miami</span>
         </div>
         <div class="mix-tags">
-          <span class="mix-tag">Tech House</span>
-          <span class="mix-tag">Groove house</span>
+          <span class="mix-tag">Deep Tech</span>
+          <span class="mix-tag">Groove House</span>
           <span class="mix-tag">Miami</span>
         </div>
-        <a href="https://soundcloud.com/adambogdandj/adam-bogdan-mix-miami-heat" target="_blank" class="mix-link">Listen on SoundCloud →</a>
+        <a href="https://soundcloud.com/adambogdandj/adam-bogdan-mix-miami-heat" target="_blank" rel="noopener" class="mix-link">Listen on SoundCloud →</a>
       </div>
     </div>
 
@@ -286,22 +317,54 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;align-i
         <div class="mix-title"><em>Live Set</em> — Jolt Radio Wynwood Miami</div>
         <div class="mix-meta">
           <span>2025</span>
-          <span>Minimal · Deep Tech 2026 · Rominimal</span>
+          <span>Minimal · Deep Tech · Rominimal</span>
         </div>
         <div class="mix-tags">
           <span class="mix-tag">Deep Tech</span>
           <span class="mix-tag">Minimal House</span>
           <span class="mix-tag">Live</span>
         </div>
-        <a href="https://www.youtube.com/watch?v=xab-uy6L4WM" target="_blank" class="mix-link">Watch on YouTube →</a>
+        <a href="https://www.youtube.com/watch?v=h51G2ivUbJk" target="_blank" rel="noopener" class="mix-link">Watch on YouTube →</a>
       </div>
     </div>
 
+    <!-- ── MIX 4 — YouTube / crossover sunrise set ── -->
+    <div class="mix-card" data-platform="youtube" data-tags="deep-house melodic">
+      <div class="mix-thumb">
+        <a href="https://www.youtube.com/watch?v=tICvs7dH0WA" target="_blank" rel="noopener" aria-label="Watch Born Slippy to Billie Eilish DJ set on YouTube">
+          <img src="https://img.youtube.com/vi/tICvs7dH0WA/maxresdefault.jpg" alt="Adam Bogdan Born Slippy to Billie Eilish DJ set" loading="lazy">
+          <div class="mix-thumb-overlay">
+            <div class="mix-play"></div>
+          </div>
+          <span class="mix-platform-badge badge-yt">YouTube</span>
+        </a>
+      </div>
+      <div class="mix-info">
+        <div class="mix-title"><em>Born Slippy to Billie Eilish</em> — DJ Set</div>
+        <div class="mix-meta">
+          <span>2026</span>
+          <span>Deep House · Melodic Electronic · Crossover</span>
+        </div>
+        <div class="mix-tags">
+          <span class="mix-tag">Deep House</span>
+          <span class="mix-tag">Melodic</span>
+          <span class="mix-tag">Sunrise</span>
+        </div>
+        <a href="https://www.youtube.com/watch?v=tICvs7dH0WA" target="_blank" rel="noopener" class="mix-link">Watch on YouTube →</a>
+      </div>
+    </div>
 
   </div>
   <!-- /mixes-grid -->
 
-  <div style="border-top:1px solid var(--border);margin-top:64px;padding-top:40px;">
+  <section class="mixes-about">
+    <div class="sec-eyebrow">About the Sets</div>
+    <h2>Underground DJ Sets: Deep Tech, Minimal House &amp; <em>Rominimal</em></h2>
+    <p>Adam Bogdan's DJ mixes move between deep tech, minimal house, rominimal, deep house and groove-driven underground house. The sets are built around long transitions, rolling basslines and a dancefloor-first approach rather than short-form edits.</p>
+    <p>Recorded across Miami studios, radio sessions and live environments, the selection reflects the same underground electronic music Adam plays internationally and releases through Rapture's Deli. Read the <a href="miami-minimal-deep-tech.html">guide to Miami's minimal and deep tech scene</a>, or visit the <a href="index.html#music">music section</a> for original releases.</p>
+  </section>
+
+  <div style="border-top:1px solid var(--border);margin-top:48px;padding-top:40px;">
     <div class="sec-eyebrow" style="margin-bottom:12px;">More Music</div>
     <p style="font-size:14px;color:var(--muted);font-weight:300;margin-bottom:20px;line-height:1.7;">Full back catalogue of mixes and DJ sets available on SoundCloud and YouTube.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
@@ -355,7 +418,7 @@ function filterMixes(filter, btn) {
 //     <div class="mix-title">Mix <em>Title Here</em></div>
 //     <div class="mix-meta"><span>2026</span><span>Genre</span></div>
 //     <div class="mix-tags"><span class="mix-tag">Tag</span></div>
-//     <a href="FULL_URL" target="_blank" class="mix-link">Watch on YouTube →</a>
+//     <a href="FULL_URL" target="_blank" rel="noopener" class="mix-link">Watch on YouTube →</a>
 //   </div>
 // </div>
 //
@@ -372,7 +435,7 @@ function filterMixes(filter, btn) {
 //     <div class="mix-title">Mix <em>Title Here</em></div>
 //     <div class="mix-meta"><span>2026</span><span>Genre</span></div>
 //     <div class="mix-tags"><span class="mix-tag">Tag</span></div>
-//     <a href="FULL_URL" target="_blank" class="mix-link">Listen on SoundCloud →</a>
+//     <a href="FULL_URL" target="_blank" rel="noopener" class="mix-link">Listen on SoundCloud →</a>
 //   </div>
 // </div>
 </script>
