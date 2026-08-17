@@ -177,11 +177,11 @@
   </div>
 
   <audio
-    id="lopper-player"
-    controls
-    preload="none"
-    style="width:100%; margin-top:20px;">
-  </audio>
+  id="lopper-player"
+  controls
+  preload="metadata"
+  style="width:100%; margin-top:20px;">
+</audio>
 
   <button
     id="lopper-download"
@@ -278,7 +278,13 @@ async function downloadLopper() {
   const { data, error } = await sb
     .storage
     .from("vault-audio")
-    .download("lopper.wav");
+    .createSignedUrl(
+      "lopper.wav",
+      300,
+      {
+        download: true
+      }
+    );
 
   if (error) {
 
@@ -289,22 +295,11 @@ async function downloadLopper() {
     return;
   }
 
-  const url = URL.createObjectURL(data);
+  window.location.href = data.signedUrl;
 
-  const link = document.createElement("a");
-
-  link.href = url;
-  link.download = "Adam-Bogdan-Lopper.wav";
-
-  document.body.appendChild(link);
-
-  link.click();
-
-  link.remove();
-
-  URL.revokeObjectURL(url);
-
-  button.textContent = "Download WAV";
+  setTimeout(() => {
+    button.textContent = "Download WAV";
+  }, 1000);
 }
 
 
