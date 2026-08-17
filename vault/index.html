@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Vault | Adam Bogdan</title>
+
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0a0a0a;
+      color: #f5f5f5;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .vault {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 10vw, 90px);
+      margin: 0 0 10px;
+      letter-spacing: -4px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      color: #999;
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 40px;
+    }
+
+    input {
+      width: 100%;
+      padding: 17px;
+      background: #111;
+      border: 1px solid #333;
+      color: white;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 17px;
+      background: white;
+      color: black;
+      border: 0;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    #message {
+      margin-top: 20px;
+      color: #aaa;
+      line-height: 1.5;
+    }
+
+    #member-area {
+      display: none;
+    }
+
+    .member-email {
+      color: #777;
+      font-size: 14px;
+      margin-bottom: 35px;
+    }
+
+    .track {
+      border-top: 1px solid #333;
+      padding: 25px 0;
+    }
+
+    .track-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .track-title {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .track-description {
+      color: #999;
+    }
+
+    .logout {
+      margin-top: 40px;
+      background: transparent;
+      color: #888;
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="vault">
+
+  <!-- LOGIN AREA -->
+  <div id="login-area">
+
+    <h1>The Vault</h1>
+
+    <div class="subtitle">
+      Unreleased tracks, alternate versions, private mixes,
+      demos and other music that doesn't live on streaming platforms.
+      <br><br>
+      Free access.
+    </div>
+
+    <form id="login-form">
+
+      <input
+        id="email"
+        type="email"
+        placeholder="Your email"
+        required
+        autocomplete="email"
+      >
+
+      <button type="submit">
+        Unlock The Vault
+      </button>
+
+    </form>
+
+    <div id="message"></div>
+
+  </div>
+
+
+  <!-- LOGGED-IN AREA -->
+  <div id="member-area">
+
+    <h1>The Vault</h1>
+
+    <div class="member-email" id="member-email"></div>
+
+    <div class="track">
+
+      <div class="track-label">
+        Vault test
+      </div>
+
+      <div class="track-title">
+        Access confirmed.
+      </div>
+
+      <div class="track-description">
+        If you can see this after clicking your email link,
+        the private member login is working.
+      </div>
+
+    </div>
+
+    <button class="logout" id="logout">
+      Log Out
+    </button>
+
+  </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const SUPABASE_URL =
+    "https://eyofkdrubbmpknkbzasc.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_y1htiEx0Q16ZDBvTL66SXQ_YNtNvimr";
+
+  const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
+    }
+  );
+
+
+  const loginArea = document.getElementById("login-area");
+  const memberArea = document.getElementById("member-area");
+  const memberEmail = document.getElementById("member-email");
+  const message = document.getElementById("message");
+
+
+  function showLoggedIn(user) {
+
+    loginArea.style.display = "none";
+    memberArea.style.display = "block";
+
+    memberEmail.textContent =
+      "Logged in as " + user.email;
+  }
+
+
+  function showLoggedOut() {
+
+    memberArea.style.display = "none";
+    loginArea.style.display = "block";
+  }
+
+
+  async function checkSession() {
+
+    const {
+      data: { session }
+    } = await sb.auth.getSession();
+
+    if (session && session.user) {
+      showLoggedIn(session.user);
+    } else {
+      showLoggedOut();
+    }
+  }
+
+
+  document
+    .getElementById("login-form")
+    .addEventListener("submit", async function(event) {
+
+      event.preventDefault();
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      message.textContent =
+        "Sending your access link...";
+
+      const { error } =
+        await sb.auth.signInWithOtp({
+
+          email: email,
+
+          options: {
+            emailRedirectTo:
+              "https://adambogdan.com/vault/"
+          }
+
+        });
+
+
+      if (error) {
+
+        console.error(error);
+
+        message.textContent =
+          "Something went wrong: " + error.message;
+
+        return;
+      }
+
+
+      message.textContent =
+        "Check your email. Your Vault access link is on the way.";
+
+    });
+
+
+  document
+    .getElementById("logout")
+    .addEventListener("click", async function() {
+
+      await sb.auth.signOut();
+
+      showLoggedOut();
+
+    });
+
+
+  sb.auth.onAuthStateChange(
+    function(event, session) {
+
+      if (session && session.user) {
+        showLoggedIn(session.user);
+      }
+
+      if (event === "SIGNED_OUT") {
+        showLoggedOut();
+      }
+
+    }
+  );
+
+
+  checkSession();
+</script>
+
+</body>
+</html>
