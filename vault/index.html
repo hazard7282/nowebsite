@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
@@ -17,32 +18,33 @@
       box-sizing: border-box;
     }
 
-    html {
-      background: #080808;
-    }
-
+    html,
     body {
       margin: 0;
-      min-height: 100vh;
+      min-height: 100%;
       background: #080808;
       color: #f5f5f5;
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    body {
+      min-height: 100vh;
+    }
+
     .page {
       width: 100%;
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 70px 24px 100px;
     }
 
     .eyebrow {
-      margin-bottom: 14px;
       color: #777;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
     h1 {
@@ -68,13 +70,12 @@
     input {
       width: 100%;
       padding: 17px 18px;
-      margin: 0 0 12px;
+      margin-bottom: 12px;
       background: #111;
       color: #fff;
       border: 1px solid #333;
-      border-radius: 0;
-      outline: none;
       font-size: 16px;
+      outline: none;
     }
 
     input:focus {
@@ -82,12 +83,11 @@
     }
 
     button,
-    .button {
+    .download-button {
       display: block;
       width: 100%;
       padding: 17px 20px;
       border: 0;
-      border-radius: 0;
       background: #fff;
       color: #080808;
       cursor: pointer;
@@ -100,7 +100,7 @@
     }
 
     button:hover,
-    .button:hover {
+    .download-button:hover {
       opacity: 0.85;
     }
 
@@ -118,11 +118,18 @@
     }
 
     .success {
-      color: #d8d8d8 !important;
+      color: #ddd !important;
     }
 
     .error {
       color: #ff8585 !important;
+    }
+
+    .small-print {
+      margin-top: 20px;
+      color: #555;
+      font-size: 11px;
+      line-height: 1.5;
     }
 
     #member-area {
@@ -130,7 +137,11 @@
     }
 
     .member-top {
-      margin: 25px 0 50px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      margin: 25px 0 25px;
       padding-bottom: 25px;
       border-bottom: 1px solid #242424;
     }
@@ -140,13 +151,30 @@
       font-size: 13px;
     }
 
+    .vault-description {
+      color: #888;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 35px;
+    }
+
+    #tracks {
+      width: 100%;
+    }
+
     .track {
-      padding: 30px 0 35px;
+      padding: 32px 0 38px;
       border-bottom: 1px solid #292929;
     }
 
+    .track-number {
+      color: #555;
+      font-size: 11px;
+      margin-bottom: 12px;
+    }
+
     .track-label {
-      margin-bottom: 10px;
+      margin-bottom: 9px;
       color: #777;
       font-size: 10px;
       font-weight: 700;
@@ -155,9 +183,15 @@
     }
 
     .track-title {
-      margin-bottom: 10px;
-      font-size: 27px;
+      margin-bottom: 8px;
+      font-size: 28px;
       font-weight: 700;
+    }
+
+    .track-meta {
+      margin-bottom: 12px;
+      color: #666;
+      font-size: 12px;
     }
 
     .track-description {
@@ -170,14 +204,14 @@
     audio {
       display: block;
       width: 100%;
-      margin: 15px 0;
+      margin: 18px 0 12px;
     }
 
     .track-status {
-      min-height: 20px;
-      margin: 10px 0;
-      color: #777;
-      font-size: 13px;
+      min-height: 18px;
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 12px;
     }
 
     .download-button {
@@ -199,14 +233,13 @@
       border: 1px solid #333;
     }
 
-    .small-print {
-      margin-top: 20px;
-      color: #555;
-      font-size: 11px;
-      line-height: 1.5;
+    .loading {
+      padding: 40px 0;
+      color: #777;
     }
 
     @media (max-width: 600px) {
+
       .page {
         padding-top: 45px;
       }
@@ -214,17 +247,21 @@
       h1 {
         letter-spacing: -3px;
       }
+
+      .member-top {
+        display: block;
+      }
     }
   </style>
 </head>
+
 
 <body>
 
   <main class="page">
 
-    <!-- =====================================================
-         LOGIN AREA
-    ====================================================== -->
+
+    <!-- LOGIN -->
 
     <section id="login-area">
 
@@ -237,12 +274,17 @@
       </h1>
 
       <div class="intro">
-        Unreleased tracks, alternate versions, private mixes,
+
+        Unreleased tracks (or never will be), alternate versions, private mixes,
         demos, edits and other music that doesn't live on
         streaming platforms.
+
         <br><br>
+
         Free access for subscribers.
+
       </div>
+
 
       <div class="login-box">
 
@@ -252,13 +294,7 @@
           inputmode="email"
           autocomplete="email"
           placeholder="Your email address"
-          required
         >
-
-        <!-- IMPORTANT:
-             This is deliberately type="button".
-             It cannot perform a normal form submission/page refresh.
-        -->
 
         <button
           id="magic-link-button"
@@ -281,9 +317,8 @@
     </section>
 
 
-    <!-- =====================================================
-         MEMBER AREA
-    ====================================================== -->
+
+    <!-- MEMBER AREA -->
 
     <section id="member-area">
 
@@ -295,66 +330,34 @@
         The Vault
       </h1>
 
+
       <div class="member-top">
+
         <div
           class="member-email"
           id="member-email"
         ></div>
+
       </div>
 
 
-      <!-- ===================================================
-           TRACK 1
-      ==================================================== -->
+      <div class="vault-description">
 
-      <article class="track">
+        Unreleased music, alternate versions, archive material,
+        private mixes and selected downloads.
 
-        <div class="track-label">
-          Unreleased / Vault Exclusive
+        New material will appear here periodically.
+
+      </div>
+
+
+      <div id="tracks">
+
+        <div class="loading">
+          Loading Vault...
         </div>
 
-        <div class="track-title">
-          Lopper
-        </div>
-
-        <div class="track-description">
-          Private Vault track.
-        </div>
-
-        <!--
-          STREAMING FILE:
-          vault-audio/lopper-stream.mp3
-        -->
-
-        <audio
-          id="lopper-player"
-          controls
-          preload="metadata"
-        >
-          Your browser does not support HTML audio.
-        </audio>
-
-        <div
-          id="track-status"
-          class="track-status"
-        >
-          Loading private audio...
-        </div>
-
-        <!--
-          DOWNLOAD FILE:
-          vault-audio/lopper.wav
-        -->
-
-        <button
-          id="lopper-download"
-          class="download-button"
-          type="button"
-        >
-          Download WAV
-        </button>
-
-      </article>
+      </div>
 
 
       <button
@@ -367,12 +370,12 @@
 
     </section>
 
+
   </main>
 
 
-  <!-- =======================================================
-       SUPABASE
-  ======================================================== -->
+
+  <!-- SUPABASE -->
 
   <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
@@ -381,9 +384,9 @@
 
   <script>
 
-    /* ========================================================
-       CONFIGURATION
-    ======================================================== */
+    /* =====================================================
+       CONFIG
+    ====================================================== */
 
     const SUPABASE_URL =
       "https://eyofkdrubbmpknkbzasc.supabase.co";
@@ -391,22 +394,17 @@
     const SUPABASE_KEY =
       "sb_publishable_y1htiEx0Q16ZDBvTL66SXQ_YNtNvimr";
 
-    const BUCKET =
+    const AUDIO_BUCKET =
       "vault-audio";
-
-    const STREAM_FILE =
-      "lopper-stream.mp3";
-
-    const DOWNLOAD_FILE =
-      "lopper.wav";
 
     const MAGIC_LINK_REDIRECT =
       "https://adambogdan.com/vault/";
 
 
-    /* ========================================================
-       CREATE SUPABASE CLIENT
-    ======================================================== */
+
+    /* =====================================================
+       SUPABASE CLIENT
+    ====================================================== */
 
     const sb = window.supabase.createClient(
       SUPABASE_URL,
@@ -421,9 +419,10 @@
     );
 
 
-    /* ========================================================
+
+    /* =====================================================
        ELEMENTS
-    ======================================================== */
+    ====================================================== */
 
     const loginArea =
       document.getElementById("login-area");
@@ -443,25 +442,21 @@
     const memberEmail =
       document.getElementById("member-email");
 
-    const player =
-      document.getElementById("lopper-player");
-
-    const trackStatus =
-      document.getElementById("track-status");
-
-    const downloadButton =
-      document.getElementById("lopper-download");
+    const tracksContainer =
+      document.getElementById("tracks");
 
     const logoutButton =
       document.getElementById("logout-button");
 
 
-    let audioLoaded = false;
+
+    let tracksLoaded = false;
 
 
-    /* ========================================================
-       STATUS HELPERS
-    ======================================================== */
+
+    /* =====================================================
+       LOGIN STATUS
+    ====================================================== */
 
     function setLoginStatus(message, type = "") {
 
@@ -472,24 +467,14 @@
       if (type) {
         loginStatus.classList.add(type);
       }
+
     }
 
 
-    function setTrackStatus(message, type = "") {
 
-      trackStatus.textContent = message;
-
-      trackStatus.className = "track-status";
-
-      if (type) {
-        trackStatus.classList.add(type);
-      }
-    }
-
-
-    /* ========================================================
-       SHOW LOGIN
-    ======================================================== */
+    /* =====================================================
+       LOGGED OUT
+    ====================================================== */
 
     function showLoggedOut() {
 
@@ -498,16 +483,18 @@
 
       memberEmail.textContent = "";
 
-      player.removeAttribute("src");
-      player.load();
+      tracksContainer.innerHTML =
+        '<div class="loading">Loading Vault...</div>';
 
-      audioLoaded = false;
+      tracksLoaded = false;
+
     }
 
 
-    /* ========================================================
-       SHOW VAULT
-    ======================================================== */
+
+    /* =====================================================
+       LOGGED IN
+    ====================================================== */
 
     async function showLoggedIn(user) {
 
@@ -517,20 +504,25 @@
       memberEmail.textContent =
         "Logged in as " + user.email;
 
-      if (!audioLoaded) {
-        await loadPrivateAudio();
+      if (!tracksLoaded) {
+
+        await loadTracks();
+
       }
+
     }
 
 
-    /* ========================================================
-       SEND MAGIC LINK
-    ======================================================== */
+
+    /* =====================================================
+       MAGIC LINK
+    ====================================================== */
 
     async function sendMagicLink() {
 
       const email =
         emailInput.value.trim();
+
 
       if (!email) {
 
@@ -542,6 +534,7 @@
         emailInput.focus();
 
         return;
+
       }
 
 
@@ -550,6 +543,7 @@
         emailInput.reportValidity();
 
         return;
+
       }
 
 
@@ -559,7 +553,7 @@
         "Sending Access Link...";
 
       setLoginStatus(
-        "Contacting The Vault..."
+        "Sending your Vault access link..."
       );
 
 
@@ -567,14 +561,19 @@
 
         const { error } =
           await sb.auth.signInWithOtp({
+
             email: email,
+
             options: {
+
               emailRedirectTo:
                 MAGIC_LINK_REDIRECT,
 
               shouldCreateUser:
                 true
+
             }
+
           });
 
 
@@ -584,7 +583,7 @@
 
 
         setLoginStatus(
-          "Access link sent. Check your email and click the link to enter The Vault.",
+          "Access link sent. Check your email.",
           "success"
         );
 
@@ -600,37 +599,311 @@
           error
         );
 
+
         setLoginStatus(
-          "Could not send the access link: " +
+          "Could not send access link: " +
           (error.message || "Unknown error"),
           "error"
         );
+
 
         magicLinkButton.disabled = false;
 
         magicLinkButton.textContent =
           "Unlock The Vault";
+
       }
+
     }
 
 
-    /* ========================================================
-       LOAD PRIVATE STREAM
-    ======================================================== */
 
-    async function loadPrivateAudio() {
+    /* =====================================================
+       LOAD TRACK LIST
+    ====================================================== */
 
-      setTrackStatus(
-        "Loading private audio..."
-      );
+    async function loadTracks() {
+
+      tracksContainer.innerHTML =
+        '<div class="loading">Loading Vault...</div>';
 
 
       try {
 
         /*
-          First confirm that Supabase sees a valid
-          authenticated session.
+          tracks.json lives beside index.html
         */
+
+        const response =
+          await fetch(
+            "tracks.json?v=" + Date.now()
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Could not load tracks.json"
+          );
+
+        }
+
+
+        const tracks =
+          await response.json();
+
+
+        tracksContainer.innerHTML = "";
+
+
+        if (
+          !Array.isArray(tracks) ||
+          tracks.length === 0
+        ) {
+
+          tracksContainer.innerHTML =
+            '<div class="loading">No tracks currently available.</div>';
+
+          return;
+
+        }
+
+
+        tracks.forEach(
+          function(track, index) {
+
+            createTrackCard(
+              track,
+              index
+            );
+
+          }
+        );
+
+
+        tracksLoaded = true;
+
+
+      } catch (error) {
+
+        console.error(
+          "Track list error:",
+          error
+        );
+
+
+        tracksContainer.innerHTML =
+          '<div class="error">Could not load the Vault catalog.</div>';
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       CREATE TRACK CARD
+    ====================================================== */
+
+    function createTrackCard(
+      track,
+      index
+    ) {
+
+      const article =
+        document.createElement("article");
+
+      article.className =
+        "track";
+
+
+      /* NUMBER */
+
+      const number =
+        document.createElement("div");
+
+      number.className =
+        "track-number";
+
+      number.textContent =
+        String(index + 1)
+          .padStart(2, "0");
+
+
+      /* LABEL */
+
+      const label =
+        document.createElement("div");
+
+      label.className =
+        "track-label";
+
+      label.textContent =
+        track.label || "Vault Exclusive";
+
+
+      /* TITLE */
+
+      const title =
+        document.createElement("div");
+
+      title.className =
+        "track-title";
+
+      title.textContent =
+        track.title || "Untitled";
+
+
+      /* META */
+
+      const meta =
+        document.createElement("div");
+
+      meta.className =
+        "track-meta";
+
+
+      let metaParts = [];
+
+
+      if (track.year) {
+        metaParts.push(track.year);
+      }
+
+
+      if (track.format) {
+        metaParts.push(track.format);
+      }
+
+
+      meta.textContent =
+        metaParts.join(" · ");
+
+
+      /* DESCRIPTION */
+
+      const description =
+        document.createElement("div");
+
+      description.className =
+        "track-description";
+
+      description.textContent =
+        track.description || "";
+
+
+      /* PLAYER */
+
+      const player =
+        document.createElement("audio");
+
+      player.controls = true;
+
+      player.preload =
+        "metadata";
+
+
+      /* STATUS */
+
+      const status =
+        document.createElement("div");
+
+      status.className =
+        "track-status";
+
+      status.textContent =
+        "Loading private stream...";
+
+
+      /* ASSEMBLE */
+
+      article.appendChild(number);
+      article.appendChild(label);
+      article.appendChild(title);
+
+
+      if (meta.textContent) {
+        article.appendChild(meta);
+      }
+
+
+      if (track.description) {
+        article.appendChild(description);
+      }
+
+
+      article.appendChild(player);
+      article.appendChild(status);
+
+
+
+      /* DOWNLOAD BUTTON */
+
+      if (
+        track.downloadable === true &&
+        track.downloadUrl
+      ) {
+
+        const downloadButton =
+          document.createElement("a");
+
+        downloadButton.className =
+          "download-button";
+
+        downloadButton.href =
+          track.downloadUrl;
+
+        downloadButton.textContent =
+          track.downloadText ||
+          "Download WAV";
+
+        article.appendChild(
+          downloadButton
+        );
+
+      }
+
+
+      tracksContainer.appendChild(
+        article
+      );
+
+
+      /*
+        Load stream AFTER card exists.
+      */
+
+      loadPrivateStream(
+        track.stream,
+        player,
+        status
+      );
+
+    }
+
+
+
+    /* =====================================================
+       PRIVATE SUPABASE STREAM
+    ====================================================== */
+
+    async function loadPrivateStream(
+      filename,
+      player,
+      status
+    ) {
+
+      if (!filename) {
+
+        status.textContent =
+          "Stream unavailable.";
+
+        return;
+
+      }
+
+
+      try {
 
         const {
           data: sessionData,
@@ -648,22 +921,18 @@
           throw new Error(
             "No active Vault session."
           );
+
         }
 
-
-        /*
-          Create a temporary signed URL for the
-          compressed MP3 streaming copy.
-        */
 
         const {
           data,
           error
         } = await sb
           .storage
-          .from(BUCKET)
+          .from(AUDIO_BUCKET)
           .createSignedUrl(
-            STREAM_FILE,
+            filename,
             3600
           );
 
@@ -673,11 +942,15 @@
         }
 
 
-        if (!data || !data.signedUrl) {
+        if (
+          !data ||
+          !data.signedUrl
+        ) {
 
           throw new Error(
-            "Supabase did not return an audio URL."
+            "No stream URL returned."
           );
+
         }
 
 
@@ -686,169 +959,37 @@
 
         player.load();
 
-        audioLoaded = true;
 
-
-        setTrackStatus(
-          "Private stream ready.",
-          "success"
-        );
+        status.textContent =
+          "";
 
 
       } catch (error) {
 
         console.error(
           "Stream error:",
+          filename,
           error
         );
 
 
-        setTrackStatus(
-          "Player unavailable: " +
-          (error.message || "Unknown error"),
-          "error"
-        );
-      }
-    }
+        status.textContent =
+          "Stream unavailable: " +
+          (error.message || "Unknown error");
 
-
-    /* ========================================================
-       DOWNLOAD WAV
-    ======================================================== */
-
-    async function downloadLopper() {
-
-      const originalText =
-        downloadButton.textContent;
-
-
-      downloadButton.disabled = true;
-
-      downloadButton.textContent =
-        "Preparing Download...";
-
-
-      try {
-
-        /*
-          Confirm user is still authenticated.
-        */
-
-        const {
-          data: sessionData,
-          error: sessionError
-        } = await sb.auth.getSession();
-
-
-        if (sessionError) {
-          throw sessionError;
-        }
-
-
-        if (!sessionData.session) {
-
-          throw new Error(
-            "Your Vault session has expired. Log in again."
-          );
-        }
-
-
-        /*
-          Generate a temporary signed URL.
-          download:true tells Supabase to return
-          the file as a download rather than normal
-          inline playback.
-        */
-
-        const {
-          data,
-          error
-        } = await sb
-          .storage
-          .from(BUCKET)
-          .createSignedUrl(
-            DOWNLOAD_FILE,
-            300,
-            {
-              download: true
-            }
-          );
-
-
-        if (error) {
-          throw error;
-        }
-
-
-        if (!data || !data.signedUrl) {
-
-          throw new Error(
-            "Supabase did not return a download URL."
-          );
-        }
-
-
-        /*
-          Use a temporary anchor instead of first
-          downloading the entire WAV into browser memory.
-        */
-
-        const link =
-          document.createElement("a");
-
-        link.href =
-          data.signedUrl;
-
-        link.rel =
-          "noopener";
-
-        document.body.appendChild(link);
-
-        link.click();
-
-        link.remove();
-
-
-        downloadButton.textContent =
-          "Download Started";
-
-
-        setTimeout(function () {
-
-          downloadButton.disabled = false;
-
-          downloadButton.textContent =
-            originalText;
-
-        }, 1500);
-
-
-      } catch (error) {
-
-        console.error(
-          "Download error:",
-          error
-        );
-
-
-        setTrackStatus(
-          "Download unavailable: " +
-          (error.message || "Unknown error"),
+        status.classList.add(
           "error"
         );
 
-
-        downloadButton.disabled = false;
-
-        downloadButton.textContent =
-          originalText;
       }
+
     }
 
 
-    /* ========================================================
-       LOG OUT
-    ======================================================== */
+
+    /* =====================================================
+       LOGOUT
+    ====================================================== */
 
     async function logout() {
 
@@ -862,6 +1003,12 @@
         await sb.auth.signOut();
 
 
+      logoutButton.disabled = false;
+
+      logoutButton.textContent =
+        "Log Out";
+
+
       if (error) {
 
         console.error(
@@ -869,38 +1016,26 @@
           error
         );
 
-        logoutButton.disabled = false;
-
-        logoutButton.textContent =
-          "Log Out";
-
         return;
+
       }
 
 
-      logoutButton.disabled = false;
-
-      logoutButton.textContent =
-        "Log Out";
-
       showLoggedOut();
+
     }
 
 
-    /* ========================================================
-       BUTTON EVENTS
-    ======================================================== */
+
+    /* =====================================================
+       EVENTS
+    ====================================================== */
 
     magicLinkButton.addEventListener(
       "click",
       sendMagicLink
     );
 
-
-    /*
-      Allow ENTER while the email field is selected.
-      There is still no native form submission.
-    */
 
     emailInput.addEventListener(
       "keydown",
@@ -911,14 +1046,10 @@
           event.preventDefault();
 
           sendMagicLink();
+
         }
+
       }
-    );
-
-
-    downloadButton.addEventListener(
-      "click",
-      downloadLopper
     );
 
 
@@ -928,18 +1059,13 @@
     );
 
 
-    /* ========================================================
-       AUTH STATE CHANGES
-    ======================================================== */
+
+    /* =====================================================
+       AUTH EVENTS
+    ====================================================== */
 
     sb.auth.onAuthStateChange(
       function(event, session) {
-
-        console.log(
-          "Auth event:",
-          event
-        );
-
 
         if (
           session &&
@@ -951,20 +1077,26 @@
           );
 
           return;
+
         }
 
 
-        if (event === "SIGNED_OUT") {
+        if (
+          event === "SIGNED_OUT"
+        ) {
 
           showLoggedOut();
+
         }
+
       }
     );
 
 
-    /* ========================================================
-       INITIAL PAGE LOAD
-    ======================================================== */
+
+    /* =====================================================
+       INITIALIZE
+    ====================================================== */
 
     async function initializeVault() {
 
@@ -993,25 +1125,28 @@
         } else {
 
           showLoggedOut();
+
         }
 
 
       } catch (error) {
 
         console.error(
-          "Initialization error:",
+          "Vault initialization error:",
           error
         );
 
 
         showLoggedOut();
 
+
         setLoginStatus(
-          "Vault initialization error: " +
-          (error.message || "Unknown error"),
+          "Vault initialization error.",
           "error"
         );
+
       }
+
     }
 
 
@@ -1020,4 +1155,5 @@
   </script>
 
 </body>
+
 </html>
