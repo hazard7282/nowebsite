@@ -39,12 +39,12 @@
     }
 
     .eyebrow {
+      margin-bottom: 14px;
       color: #777;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      margin-bottom: 14px;
     }
 
     h1 {
@@ -70,12 +70,13 @@
     input {
       width: 100%;
       padding: 17px 18px;
-      margin-bottom: 12px;
+      margin: 0 0 12px;
       background: #111;
       color: #fff;
       border: 1px solid #333;
-      font-size: 16px;
+      border-radius: 0;
       outline: none;
+      font-size: 16px;
     }
 
     input:focus {
@@ -88,6 +89,7 @@
       width: 100%;
       padding: 17px 20px;
       border: 0;
+      border-radius: 0;
       background: #fff;
       color: #080808;
       cursor: pointer;
@@ -107,6 +109,16 @@
     button:disabled {
       opacity: 0.45;
       cursor: default;
+    }
+
+    #login-area,
+    #member-area {
+      display: none;
+    }
+
+    #loading-area {
+      color: #777;
+      font-size: 14px;
     }
 
     #login-status {
@@ -132,15 +144,7 @@
       line-height: 1.5;
     }
 
-    #member-area {
-      display: none;
-    }
-
     .member-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: center;
       margin: 25px 0 25px;
       padding-bottom: 25px;
       border-bottom: 1px solid #242424;
@@ -152,10 +156,10 @@
     }
 
     .vault-description {
+      margin-bottom: 35px;
       color: #888;
       font-size: 14px;
       line-height: 1.6;
-      margin-bottom: 35px;
     }
 
     #tracks {
@@ -168,9 +172,9 @@
     }
 
     .track-number {
+      margin-bottom: 12px;
       color: #555;
       font-size: 11px;
-      margin-bottom: 12px;
     }
 
     .track-label {
@@ -209,9 +213,9 @@
 
     .track-status {
       min-height: 18px;
+      margin-bottom: 12px;
       color: #666;
       font-size: 12px;
-      margin-bottom: 12px;
     }
 
     .download-button {
@@ -239,17 +243,12 @@
     }
 
     @media (max-width: 600px) {
-
       .page {
         padding-top: 45px;
       }
 
       h1 {
         letter-spacing: -3px;
-      }
-
-      .member-top {
-        display: block;
       }
     }
   </style>
@@ -261,7 +260,15 @@
   <main class="page">
 
 
-    <!-- LOGIN -->
+    <!-- INITIAL LOADING -->
+
+    <section id="loading-area">
+      Loading The Vault...
+    </section>
+
+
+
+    <!-- LOGIN AREA -->
 
     <section id="login-area">
 
@@ -274,15 +281,13 @@
       </h1>
 
       <div class="intro">
-
-        Unreleased tracks (or never will be), alternate versions, private mixes,
+        Unreleased tracks, alternate versions, private mixes,
         demos, edits and other music that doesn't live on
         streaming platforms.
 
         <br><br>
 
         Free access for subscribers.
-
       </div>
 
 
@@ -330,24 +335,19 @@
         The Vault
       </h1>
 
-
       <div class="member-top">
 
         <div
-          class="member-email"
           id="member-email"
+          class="member-email"
         ></div>
 
       </div>
 
 
       <div class="vault-description">
-
         Unreleased music, alternate versions, archive material,
         private mixes and selected downloads.
-
-        New material will appear here periodically.
-
       </div>
 
 
@@ -370,23 +370,20 @@
 
     </section>
 
-
   </main>
 
 
 
   <!-- SUPABASE -->
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-  ></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
   <script>
 
-    /* =====================================================
+    /* =========================================================
        CONFIG
-    ====================================================== */
+    ========================================================= */
 
     const SUPABASE_URL =
       "https://eyofkdrubbmpknkbzasc.supabase.co";
@@ -401,10 +398,9 @@
       "https://adambogdan.com/vault/";
 
 
-
-    /* =====================================================
-       SUPABASE CLIENT
-    ====================================================== */
+    /* =========================================================
+       CREATE SUPABASE CLIENT
+    ========================================================= */
 
     const sb = window.supabase.createClient(
       SUPABASE_URL,
@@ -413,16 +409,19 @@
         auth: {
           persistSession: true,
           autoRefreshToken: true,
-          detectSessionInUrl: true
+          detectSessionInUrl: true,
+          flowType: "implicit"
         }
       }
     );
 
 
-
-    /* =====================================================
+    /* =========================================================
        ELEMENTS
-    ====================================================== */
+    ========================================================= */
+
+    const loadingArea =
+      document.getElementById("loading-area");
 
     const loginArea =
       document.getElementById("login-area");
@@ -449,19 +448,13 @@
       document.getElementById("logout-button");
 
 
-
-    let tracksLoaded = false;
-
-
-
-    /* =====================================================
-       LOGIN STATUS
-    ====================================================== */
+    /* =========================================================
+       LOGIN MESSAGE
+    ========================================================= */
 
     function setLoginStatus(message, type = "") {
 
       loginStatus.textContent = message;
-
       loginStatus.className = "";
 
       if (type) {
@@ -471,52 +464,45 @@
     }
 
 
-
-    /* =====================================================
-       LOGGED OUT
-    ====================================================== */
+    /* =========================================================
+       SHOW LOGGED OUT
+    ========================================================= */
 
     function showLoggedOut() {
 
-      loginArea.style.display = "block";
+      loadingArea.style.display = "none";
       memberArea.style.display = "none";
+      loginArea.style.display = "block";
 
       memberEmail.textContent = "";
 
       tracksContainer.innerHTML =
         '<div class="loading">Loading Vault...</div>';
 
-      tracksLoaded = false;
-
     }
 
 
-
-    /* =====================================================
-       LOGGED IN
-    ====================================================== */
+    /* =========================================================
+       SHOW LOGGED IN
+    ========================================================= */
 
     async function showLoggedIn(user) {
 
+      loadingArea.style.display = "none";
       loginArea.style.display = "none";
       memberArea.style.display = "block";
 
       memberEmail.textContent =
         "Logged in as " + user.email;
 
-      if (!tracksLoaded) {
-
-        await loadTracks();
-
-      }
+      await loadTracks();
 
     }
 
 
-
-    /* =====================================================
-       MAGIC LINK
-    ====================================================== */
+    /* =========================================================
+       SEND MAGIC LINK
+    ========================================================= */
 
     async function sendMagicLink() {
 
@@ -583,10 +569,9 @@
 
 
         setLoginStatus(
-          "Access link sent. Check your email.",
+          "Access link sent. Check your email and click the newest link.",
           "success"
         );
-
 
         magicLinkButton.textContent =
           "Link Sent";
@@ -617,10 +602,9 @@
     }
 
 
-
-    /* =====================================================
-       LOAD TRACK LIST
-    ====================================================== */
+    /* =========================================================
+       LOAD TRACKS.JSON
+    ========================================================= */
 
     async function loadTracks() {
 
@@ -630,20 +614,20 @@
 
       try {
 
-        /*
-          tracks.json lives beside index.html
-        */
-
         const response =
           await fetch(
-            "tracks.json?v=" + Date.now()
+            "./tracks.json?v=" + Date.now(),
+            {
+              cache: "no-store"
+            }
           );
 
 
         if (!response.ok) {
 
           throw new Error(
-            "Could not load tracks.json"
+            "tracks.json returned HTTP " +
+            response.status
           );
 
         }
@@ -653,13 +637,19 @@
           await response.json();
 
 
+        if (!Array.isArray(tracks)) {
+
+          throw new Error(
+            "tracks.json is not a valid track list."
+          );
+
+        }
+
+
         tracksContainer.innerHTML = "";
 
 
-        if (
-          !Array.isArray(tracks) ||
-          tracks.length === 0
-        ) {
+        if (tracks.length === 0) {
 
           tracksContainer.innerHTML =
             '<div class="loading">No tracks currently available.</div>';
@@ -669,43 +659,44 @@
         }
 
 
-        tracks.forEach(
-          function(track, index) {
+        for (
+          let index = 0;
+          index < tracks.length;
+          index++
+        ) {
 
-            createTrackCard(
-              track,
-              index
-            );
+          await createTrackCard(
+            tracks[index],
+            index
+          );
 
-          }
-        );
-
-
-        tracksLoaded = true;
+        }
 
 
       } catch (error) {
 
         console.error(
-          "Track list error:",
+          "Vault catalog error:",
           error
         );
 
 
         tracksContainer.innerHTML =
-          '<div class="error">Could not load the Vault catalog.</div>';
+          '<div class="error">' +
+          'Could not load the Vault catalog: ' +
+          escapeHtml(error.message || "Unknown error") +
+          '</div>';
 
       }
 
     }
 
 
+    /* =========================================================
+       CREATE TRACK
+    ========================================================= */
 
-    /* =====================================================
-       CREATE TRACK CARD
-    ====================================================== */
-
-    function createTrackCard(
+    async function createTrackCard(
       track,
       index
     ) {
@@ -739,7 +730,8 @@
         "track-label";
 
       label.textContent =
-        track.label || "Vault Exclusive";
+        track.label ||
+        "Vault Exclusive";
 
 
       /* TITLE */
@@ -751,93 +743,108 @@
         "track-title";
 
       title.textContent =
-        track.title || "Untitled";
+        track.title ||
+        "Untitled";
 
-
-      /* META */
-
-      const meta =
-        document.createElement("div");
-
-      meta.className =
-        "track-meta";
-
-
-      let metaParts = [];
-
-
-      if (track.year) {
-        metaParts.push(track.year);
-      }
-
-
-      if (track.format) {
-        metaParts.push(track.format);
-      }
-
-
-      meta.textContent =
-        metaParts.join(" · ");
-
-
-      /* DESCRIPTION */
-
-      const description =
-        document.createElement("div");
-
-      description.className =
-        "track-description";
-
-      description.textContent =
-        track.description || "";
-
-
-      /* PLAYER */
-
-      const player =
-        document.createElement("audio");
-
-      player.controls = true;
-
-      player.preload =
-        "metadata";
-
-
-      /* STATUS */
-
-      const status =
-        document.createElement("div");
-
-      status.className =
-        "track-status";
-
-      status.textContent =
-        "Loading private stream...";
-
-
-      /* ASSEMBLE */
 
       article.appendChild(number);
       article.appendChild(label);
       article.appendChild(title);
 
 
-      if (meta.textContent) {
-        article.appendChild(meta);
+      /* META */
+
+      const metaParts = [];
+
+      if (track.year) {
+        metaParts.push(track.year);
       }
 
+      if (track.format) {
+        metaParts.push(track.format);
+      }
+
+
+      if (metaParts.length > 0) {
+
+        const meta =
+          document.createElement("div");
+
+        meta.className =
+          "track-meta";
+
+        meta.textContent =
+          metaParts.join(" · ");
+
+        article.appendChild(meta);
+
+      }
+
+
+      /* DESCRIPTION */
 
       if (track.description) {
+
+        const description =
+          document.createElement("div");
+
+        description.className =
+          "track-description";
+
+        description.textContent =
+          track.description;
+
         article.appendChild(description);
+
       }
 
 
-      article.appendChild(player);
-      article.appendChild(status);
+      /* PLAYER */
+
+      if (track.stream) {
+
+        const player =
+          document.createElement("audio");
+
+        player.controls = true;
+        player.preload = "metadata";
+
+        article.appendChild(player);
 
 
+        const status =
+          document.createElement("div");
 
-      /* DOWNLOAD BUTTON */
+        status.className =
+          "track-status";
+
+        status.textContent =
+          "Loading private stream...";
+
+        article.appendChild(status);
+
+
+        tracksContainer.appendChild(
+          article
+        );
+
+
+        await loadPrivateStream(
+          track.stream,
+          player,
+          status
+        );
+
+      } else {
+
+        tracksContainer.appendChild(
+          article
+        );
+
+      }
+
+
+      /* DOWNLOAD */
 
       if (
         track.downloadable === true &&
@@ -853,9 +860,16 @@
         downloadButton.href =
           track.downloadUrl;
 
+        downloadButton.target =
+          "_blank";
+
+        downloadButton.rel =
+          "noopener noreferrer";
+
         downloadButton.textContent =
           track.downloadText ||
           "Download WAV";
+
 
         article.appendChild(
           downloadButton
@@ -863,29 +877,12 @@
 
       }
 
-
-      tracksContainer.appendChild(
-        article
-      );
-
-
-      /*
-        Load stream AFTER card exists.
-      */
-
-      loadPrivateStream(
-        track.stream,
-        player,
-        status
-      );
-
     }
 
 
-
-    /* =====================================================
-       PRIVATE SUPABASE STREAM
-    ====================================================== */
+    /* =========================================================
+       LOAD PRIVATE SUPABASE MP3
+    ========================================================= */
 
     async function loadPrivateStream(
       filename,
@@ -893,37 +890,13 @@
       status
     ) {
 
-      if (!filename) {
-
-        status.textContent =
-          "Stream unavailable.";
-
-        return;
-
-      }
-
-
       try {
 
-        const {
-          data: sessionData,
-          error: sessionError
-        } = await sb.auth.getSession();
-
-
-        if (sessionError) {
-          throw sessionError;
-        }
-
-
-        if (!sessionData.session) {
-
-          throw new Error(
-            "No active Vault session."
-          );
-
-        }
-
+        /*
+          IMPORTANT:
+          We already verified authentication in initializeVault().
+          Do NOT call auth.getSession() again here.
+        */
 
         const {
           data,
@@ -948,7 +921,7 @@
         ) {
 
           throw new Error(
-            "No stream URL returned."
+            "No signed audio URL returned."
           );
 
         }
@@ -959,9 +932,7 @@
 
         player.load();
 
-
-        status.textContent =
-          "";
+        status.textContent = "";
 
 
       } catch (error) {
@@ -986,10 +957,9 @@
     }
 
 
-
-    /* =====================================================
-       LOGOUT
-    ====================================================== */
+    /* =========================================================
+       LOG OUT
+    ========================================================= */
 
     async function logout() {
 
@@ -999,8 +969,34 @@
         "Logging Out...";
 
 
-      const { error } =
-        await sb.auth.signOut();
+      try {
+
+        const { error } =
+          await sb.auth.signOut();
+
+
+        if (error) {
+          throw error;
+        }
+
+
+        showLoggedOut();
+
+
+      } catch (error) {
+
+        console.error(
+          "Logout error:",
+          error
+        );
+
+
+        alert(
+          "Could not log out: " +
+          (error.message || "Unknown error")
+        );
+
+      }
 
 
       logoutButton.disabled = false;
@@ -1008,28 +1004,29 @@
       logoutButton.textContent =
         "Log Out";
 
-
-      if (error) {
-
-        console.error(
-          "Logout error:",
-          error
-        );
-
-        return;
-
-      }
+    }
 
 
-      showLoggedOut();
+    /* =========================================================
+       BASIC HTML ESCAPING FOR ERRORS
+    ========================================================= */
+
+    function escapeHtml(value) {
+
+      return String(value)
+
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 
     }
 
 
-
-    /* =====================================================
-       EVENTS
-    ====================================================== */
+    /* =========================================================
+       BUTTON EVENTS
+    ========================================================= */
 
     magicLinkButton.addEventListener(
       "click",
@@ -1059,48 +1056,31 @@
     );
 
 
+    /* =========================================================
+       INITIALIZE VAULT
 
-    /* =====================================================
-       AUTH EVENTS
-    ====================================================== */
+       This is the ONLY place that checks the auth session
+       on page load.
 
-    sb.auth.onAuthStateChange(
-      function(event, session) {
-
-        if (
-          session &&
-          session.user
-        ) {
-
-          showLoggedIn(
-            session.user
-          );
-
-          return;
-
-        }
-
-
-        if (
-          event === "SIGNED_OUT"
-        ) {
-
-          showLoggedOut();
-
-        }
-
-      }
-    );
-
-
-
-    /* =====================================================
-       INITIALIZE
-    ====================================================== */
+       No onAuthStateChange callback.
+       No nested Supabase auth calls.
+    ========================================================= */
 
     async function initializeVault() {
 
+      loadingArea.style.display =
+        "block";
+
+
       try {
+
+        /*
+          createClient() has detectSessionInUrl enabled.
+
+          When the magic-link redirect returns here,
+          Supabase processes the auth data and getSession()
+          returns the resulting browser session.
+        */
 
         const {
           data,
@@ -1114,13 +1094,41 @@
 
 
         if (
+          data &&
           data.session &&
           data.session.user
         ) {
 
+          /*
+            Clean authentication tokens from the visible
+            browser URL after Supabase has processed them.
+          */
+
+          if (
+            window.location.hash &&
+            (
+              window.location.hash.includes(
+                "access_token="
+              ) ||
+              window.location.hash.includes(
+                "refresh_token="
+              )
+            )
+          ) {
+
+            window.history.replaceState(
+              {},
+              document.title,
+              window.location.pathname
+            );
+
+          }
+
+
           await showLoggedIn(
             data.session.user
           );
+
 
         } else {
 
@@ -1141,7 +1149,8 @@
 
 
         setLoginStatus(
-          "Vault initialization error.",
+          "Vault login error: " +
+          (error.message || "Unknown error"),
           "error"
         );
 
@@ -1149,6 +1158,10 @@
 
     }
 
+
+    /* =========================================================
+       START
+    ========================================================= */
 
     initializeVault();
 
