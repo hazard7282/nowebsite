@@ -250,12 +250,18 @@ async function loadVaultTracks() {
   const { data, error } = await sb
     .storage
     .from("vault-audio")
-    .createSignedUrl("lopper.wav", 3600);
+    .createSignedUrl("lopper-stream.mp3", 3600);
 
   if (error) {
     console.error("Audio error:", error);
     return;
   }
+
+  const player = document.getElementById("lopper-player");
+
+  player.src = data.signedUrl;
+  player.load();
+}
 
   document.getElementById("lopper-player").src =
     data.signedUrl;
