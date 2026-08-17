@@ -164,20 +164,32 @@
 
     <div class="track">
 
-      <div class="track-label">
-        Vault test
-      </div>
+  <div class="track-label">
+    Unreleased
+  </div>
 
-      <div class="track-title">
-        Access confirmed.
-      </div>
+  <div class="track-title">
+    Lopper
+  </div>
 
-      <div class="track-description">
-        If you can see this after clicking your email link,
-        the private member login is working.
-      </div>
+  <div class="track-description">
+    Vault exclusive.
+  </div>
 
-    </div>
+  <audio
+    id="lopper-player"
+    controls
+    preload="none"
+    style="width:100%; margin-top:20px;">
+  </audio>
+
+  <button
+    id="lopper-download"
+    style="margin-top:12px;">
+    Download WAV
+  </button>
+
+</div>
 
     <button class="logout" id="logout">
       Log Out
@@ -223,6 +235,7 @@
 
     memberEmail.textContent =
       "Logged in as " + user.email;
+    loadVaultTracks();
   }
 
 
@@ -232,7 +245,66 @@
     loginArea.style.display = "block";
   }
 
+async function loadVaultTracks() {
 
+  const { data, error } = await sb
+    .storage
+    .from("vault-audio")
+    .createSignedUrl("lopper.wav", 3600);
+
+  if (error) {
+    console.error("Audio error:", error);
+    return;
+  }
+
+  document.getElementById("lopper-player").src =
+    data.signedUrl;
+}
+
+
+async function downloadLopper() {
+
+  const button =
+    document.getElementById("lopper-download");
+
+  button.textContent = "Preparing download...";
+
+  const { data, error } = await sb
+    .storage
+    .from("vault-audio")
+    .download("lopper.wav");
+
+  if (error) {
+
+    console.error("Download error:", error);
+
+    button.textContent = "Download failed";
+
+    return;
+  }
+
+  const url = URL.createObjectURL(data);
+
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "Adam-Bogdan-Lopper.wav";
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  link.remove();
+
+  URL.revokeObjectURL(url);
+
+  button.textContent = "Download WAV";
+}
+
+
+document
+  .getElementById("lopper-download")
+  .addEventListener("click", downloadLopper);
   async function checkSession() {
 
     const {
