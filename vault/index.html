@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -275,9 +274,8 @@
         ></div>
 
         <div class="small-print">
-          By unlocking the Vault, you'll also receive occasional
-          Adam Bogdan music, release and Vault updates.
-          Unsubscribe anytime.
+          We'll send a verification link to this address.
+          After you verify it, the Vault will unlock on this browser.
         </div>
 
       </div>
@@ -307,11 +305,9 @@
       </div>
 
       <div id="tracks">
-
         <div class="loading">
           Loading Vault...
         </div>
-
       </div>
 
       <button
@@ -336,11 +332,13 @@
     const SIGNUP_ENDPOINT =
       "https://eyofkdrubbmpknkbzasc.supabase.co/functions/v1/vault-signup";
 
-    const ACCESS_KEY =
-      "adam_bogdan_vault_access";
+    /*
+      IMPORTANT:
+      New key. Old unverified access will NOT count.
+    */
 
-    const EMAIL_KEY =
-      "adam_bogdan_vault_email";
+    const ACCESS_KEY =
+      "adam_bogdan_vault_verified_v2";
 
 
     /* =========================================================
@@ -386,7 +384,7 @@
 
 
     /* =========================================================
-       SHOW EMAIL GATE
+       GATE
     ========================================================= */
 
     function showGate() {
@@ -398,7 +396,7 @@
 
 
     /* =========================================================
-       SHOW VAULT
+       VAULT
     ========================================================= */
 
     async function showVault() {
@@ -412,13 +410,15 @@
 
 
     /* =========================================================
-       SIGNUP + UNLOCK
+       REQUEST VERIFICATION EMAIL
     ========================================================= */
 
-    async function unlockVault() {
+    async function requestVerification() {
 
       const email =
-        emailInput.value.trim().toLowerCase();
+        emailInput.value
+          .trim()
+          .toLowerCase();
 
 
       if (!email) {
@@ -447,10 +447,10 @@
       unlockButton.disabled = true;
 
       unlockButton.textContent =
-        "Unlocking...";
+        "Sending Verification...";
 
       setStatus(
-        "Adding you to the Vault..."
+        "Sending your verification link..."
       );
 
 
@@ -463,7 +463,8 @@
               method: "POST",
 
               headers: {
-                "Content-Type": "application/json"
+                "Content-Type":
+                  "application/json"
               },
 
               body: JSON.stringify({
@@ -484,40 +485,57 @@
 
           throw new Error(
             data.error ||
-            "Could not unlock the Vault."
+            "Could not send verification."
           );
 
         }
 
 
         /*
-          Remember access on this browser.
+          VERY IMPORTANT:
+
+          Do NOT unlock here.
+
+          The email address has not been verified yet.
         */
 
-        localStorage.setItem(
-          ACCESS_KEY,
-          "yes"
-        );
-
-        localStorage.setItem(
-          EMAIL_KEY,
-          email
+        setStatus(
+          "Check your email. Click the verification link to unlock The Vault.",
+          "success"
         );
 
 
-        await showVault();
+        unlockButton.textContent =
+          "Verification Sent";
+
+
+        /*
+          Allow another request later if needed.
+        */
+
+        setTimeout(
+          function() {
+
+            unlockButton.disabled = false;
+
+            unlockButton.textContent =
+              "Send Verification Again";
+
+          },
+          60000
+        );
 
 
       } catch (error) {
 
         console.error(
-          "Vault signup error:",
+          "Verification request error:",
           error
         );
 
 
         setStatus(
-          "Could not unlock the Vault: " +
+          "Could not send verification: " +
           (error.message || "Unknown error"),
           "error"
         );
@@ -534,7 +552,7 @@
 
 
     /* =========================================================
-       LOAD TRACKS.JSON
+       LOAD TRACKS
     ========================================================= */
 
     async function loadTracks() {
@@ -625,7 +643,7 @@
 
 
     /* =========================================================
-       CREATE TRACK
+       CREATE TRACK CARD
     ========================================================= */
 
     function createTrackCard(
@@ -678,15 +696,13 @@
       article.appendChild(title);
 
 
-      /*
-        META
-      */
-
       const metaParts = [];
+
 
       if (track.year) {
         metaParts.push(track.year);
       }
+
 
       if (track.format) {
         metaParts.push(track.format);
@@ -709,10 +725,6 @@
       }
 
 
-      /*
-        DESCRIPTION
-      */
-
       if (track.description) {
 
         const description =
@@ -730,10 +742,8 @@
 
 
       /*
-        PLAYER
-
-        streamUrl should be a direct Dropbox MP3 URL
-        ending in raw=1.
+        Optional Dropbox MP3 stream.
+        Use streamUrl ending raw=1.
       */
 
       if (track.streamUrl) {
@@ -742,7 +752,6 @@
           document.createElement("audio");
 
         player.controls = true;
-
         player.preload = "metadata";
 
         player.src =
@@ -754,10 +763,7 @@
 
 
       /*
-        DOWNLOAD
-
-        downloadUrl should normally be the Dropbox
-        WAV link ending in dl=1.
+        Optional Dropbox download.
       */
 
       if (
@@ -793,7 +799,7 @@
 
 
     /* =========================================================
-       RESET ACCESS
+       RESET
     ========================================================= */
 
     function resetVault() {
@@ -802,17 +808,14 @@
         ACCESS_KEY
       );
 
-      localStorage.removeItem(
-        EMAIL_KEY
-      );
-
-      location.reload();
+      window.location.href =
+        "https://adambogdan.com/vault/";
 
     }
 
 
     /* =========================================================
-       HTML ESCAPE
+       ESCAPE
     ========================================================= */
 
     function escapeHtml(value) {
@@ -833,7 +836,7 @@
 
     unlockButton.addEventListener(
       "click",
-      unlockVault
+      requestVerification
     );
 
 
@@ -845,7 +848,7 @@
 
           event.preventDefault();
 
-          unlockVault();
+          requestVerification();
 
         }
 
@@ -863,23 +866,133 @@
        INITIALIZE
     ========================================================= */
 
-    function initialize() {
+    async function initialize() {
 
-      const hasAccess =
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      const verification =
+        params.get("verification");
+
+
+      /*
+        Successful click from vault-verify.
+      */
+
+      if (
+        verification === "success"
+      ) {
+
+        localStorage.setItem(
+          ACCESS_KEY,
+          "yes"
+        );
+
+
+        /*
+          Remove ?verification=success from URL.
+        */
+
+        window.history.replaceState(
+          {},
+          document.title,
+          window.location.pathname
+        );
+
+
+        await showVault();
+
+        return;
+
+      }
+
+
+      /*
+        Expired verification.
+      */
+
+      if (
+        verification === "expired"
+      ) {
+
+        showGate();
+
+        setStatus(
+          "That verification link expired. Enter your email again for a new one.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /*
+        Invalid/used token.
+      */
+
+      if (
+        verification === "invalid"
+      ) {
+
+        showGate();
+
+        setStatus(
+          "That verification link is invalid or has already been used.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /*
+        Server-side verification error.
+      */
+
+      if (
+        verification === "error"
+      ) {
+
+        showGate();
+
+        setStatus(
+          "We couldn't verify that email. Please request another link.",
+          "error"
+        );
+
+        return;
+
+      }
+
+
+      /*
+        Returning verified visitor.
+      */
+
+      const access =
         localStorage.getItem(
           ACCESS_KEY
         );
 
 
-      if (hasAccess === "yes") {
+      if (access === "yes") {
 
-        showVault();
+        await showVault();
 
-      } else {
-
-        showGate();
+        return;
 
       }
+
+
+      /*
+        New visitor.
+      */
+
+      showGate();
 
     }
 
@@ -889,5 +1002,4 @@
   </script>
 
 </body>
-
 </html>
