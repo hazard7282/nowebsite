@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -296,12 +297,10 @@
       </h1>
 
       <div class="vault-top">
-
         <div class="vault-note">
           Unreleased music, alternate versions, archive material,
           private mixes and selected downloads.
         </div>
-
       </div>
 
       <div id="tracks">
@@ -323,6 +322,11 @@
   </main>
 
 
+  <!-- SUPABASE DATABASE CLIENT -->
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
   <script>
 
     /* =========================================================
@@ -332,13 +336,34 @@
     const SIGNUP_ENDPOINT =
       "https://eyofkdrubbmpknkbzasc.supabase.co/functions/v1/vault-signup";
 
-    /*
-      IMPORTANT:
-      New key. Old unverified access will NOT count.
-    */
+    const SUPABASE_URL =
+      "https://eyofkdrubbmpknkbzasc.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_y1htiEx0Q16ZDBvTL66SXQ_YNtNvimr";
 
     const ACCESS_KEY =
       "adam_bogdan_vault_verified_v2";
+
+
+    /* =========================================================
+       SUPABASE DATABASE CLIENT
+
+       We use Supabase ONLY to read the track table here.
+       No Supabase Auth.
+       No Supabase audio storage.
+    ========================================================= */
+
+    const db =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY,
+        {
+          auth: {
+            persistSession: false
+          }
+        }
+      );
 
 
     /* =========================================================
@@ -373,8 +398,11 @@
 
     function setStatus(message, type = "") {
 
-      signupStatus.textContent = message;
-      signupStatus.className = "";
+      signupStatus.textContent =
+        message;
+
+      signupStatus.className =
+        "";
 
       if (type) {
         signupStatus.classList.add(type);
@@ -384,25 +412,31 @@
 
 
     /* =========================================================
-       GATE
+       SHOW GATE
     ========================================================= */
 
     function showGate() {
 
-      vaultArea.style.display = "none";
-      gateArea.style.display = "block";
+      vaultArea.style.display =
+        "none";
+
+      gateArea.style.display =
+        "block";
 
     }
 
 
     /* =========================================================
-       VAULT
+       SHOW VAULT
     ========================================================= */
 
     async function showVault() {
 
-      gateArea.style.display = "none";
-      vaultArea.style.display = "block";
+      gateArea.style.display =
+        "none";
+
+      vaultArea.style.display =
+        "block";
 
       await loadTracks();
 
@@ -410,7 +444,7 @@
 
 
     /* =========================================================
-       REQUEST VERIFICATION EMAIL
+       REQUEST EMAIL VERIFICATION
     ========================================================= */
 
     async function requestVerification() {
@@ -444,7 +478,8 @@
       }
 
 
-      unlockButton.disabled = true;
+      unlockButton.disabled =
+        true;
 
       unlockButton.textContent =
         "Sending Verification...";
@@ -492,11 +527,8 @@
 
 
         /*
-          VERY IMPORTANT:
-
+          IMPORTANT:
           Do NOT unlock here.
-
-          The email address has not been verified yet.
         */
 
         setStatus(
@@ -509,14 +541,11 @@
           "Verification Sent";
 
 
-        /*
-          Allow another request later if needed.
-        */
-
         setTimeout(
           function() {
 
-            unlockButton.disabled = false;
+            unlockButton.disabled =
+              false;
 
             unlockButton.textContent =
               "Send Verification Again";
@@ -541,7 +570,8 @@
         );
 
 
-        unlockButton.disabled = false;
+        unlockButton.disabled =
+          false;
 
         unlockButton.textContent =
           "Unlock The Vault";
@@ -552,7 +582,7 @@
 
 
     /* =========================================================
-       LOAD TRACKS
+       LOAD TRACKS FROM SUPABASE TABLE
     ========================================================= */
 
     async function loadTracks() {
@@ -563,45 +593,58 @@
 
       try {
 
-        const response =
-          await fetch(
-            "./tracks.json?v=" + Date.now(),
-            {
-              cache: "no-store"
-            }
-          );
+        const {
+          data: tracks,
+          error
+        } =
+          await db
+            .from("vault_tracks")
+            .select(`
+              id,
+              sort_order,
+              title,
+              label,
+              year,
+              format,
+              description,
+              stream_url,
+              downloadable,
+              download_text,
+              download_url
+            `)
+            .eq("active", true)
+            .order(
+              "sort_order",
+              {
+                ascending: true
+              }
+            )
+            .order(
+              "id",
+              {
+                ascending: true
+              }
+            );
 
 
-        if (!response.ok) {
-
-          throw new Error(
-            "tracks.json returned HTTP " +
-            response.status
-          );
-
+        if (error) {
+          throw error;
         }
 
 
-        const tracks =
-          await response.json();
+        tracksContainer.innerHTML =
+          "";
 
 
-        if (!Array.isArray(tracks)) {
-
-          throw new Error(
-            "Invalid tracks.json file."
-          );
-
-        }
-
-
-        tracksContainer.innerHTML = "";
-
-
-        if (tracks.length === 0) {
+        if (
+          !tracks ||
+          tracks.length === 0
+        ) {
 
           tracksContainer.innerHTML =
-            '<div class="loading">No tracks currently available.</div>';
+            '<div class="loading">' +
+            'No tracks currently available.' +
+            '</div>';
 
           return;
 
@@ -623,14 +666,14 @@
       } catch (error) {
 
         console.error(
-          "Catalog error:",
+          "Vault database error:",
           error
         );
 
 
         tracksContainer.innerHTML =
           '<div class="error">' +
-          'Could not load the Vault catalog: ' +
+          'Could not load Vault tracks: ' +
           escapeHtml(
             error.message ||
             "Unknown error"
@@ -652,14 +695,20 @@
     ) {
 
       const article =
-        document.createElement("article");
+        document.createElement(
+          "article"
+        );
 
       article.className =
         "track";
 
 
+      /* TRACK NUMBER */
+
       const number =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       number.className =
         "track-number";
@@ -668,9 +717,15 @@
         String(index + 1)
           .padStart(2, "0");
 
+      article.appendChild(number);
+
+
+      /* LABEL */
 
       const label =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       label.className =
         "track-label";
@@ -679,9 +734,15 @@
         track.label ||
         "Vault Exclusive";
 
+      article.appendChild(label);
+
+
+      /* TITLE */
 
       const title =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
       title.className =
         "track-title";
@@ -690,29 +751,40 @@
         track.title ||
         "Untitled";
 
-
-      article.appendChild(number);
-      article.appendChild(label);
       article.appendChild(title);
 
+
+      /* META */
 
       const metaParts = [];
 
 
       if (track.year) {
-        metaParts.push(track.year);
+
+        metaParts.push(
+          track.year
+        );
+
       }
 
 
       if (track.format) {
-        metaParts.push(track.format);
+
+        metaParts.push(
+          track.format
+        );
+
       }
 
 
-      if (metaParts.length > 0) {
+      if (
+        metaParts.length > 0
+      ) {
 
         const meta =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         meta.className =
           "track-meta";
@@ -725,10 +797,14 @@
       }
 
 
+      /* DESCRIPTION */
+
       if (track.description) {
 
         const description =
-          document.createElement("div");
+          document.createElement(
+            "div"
+          );
 
         description.className =
           "track-description";
@@ -736,52 +812,58 @@
         description.textContent =
           track.description;
 
-        article.appendChild(description);
+        article.appendChild(
+          description
+        );
 
       }
 
 
-      /*
-        Optional Dropbox MP3 stream.
-        Use streamUrl ending raw=1.
-      */
+      /* STREAM PLAYER */
 
-      if (track.streamUrl) {
+      if (track.stream_url) {
 
         const player =
-          document.createElement("audio");
+          document.createElement(
+            "audio"
+          );
 
-        player.controls = true;
-        player.preload = "metadata";
+        player.controls =
+          true;
+
+        player.preload =
+          "metadata";
 
         player.src =
-          track.streamUrl;
+          track.stream_url;
 
-        article.appendChild(player);
+        article.appendChild(
+          player
+        );
 
       }
 
 
-      /*
-        Optional Dropbox download.
-      */
+      /* DOWNLOAD BUTTON */
 
       if (
         track.downloadable === true &&
-        track.downloadUrl
+        track.download_url
       ) {
 
         const downloadButton =
-          document.createElement("a");
+          document.createElement(
+            "a"
+          );
 
         downloadButton.className =
           "download-button";
 
         downloadButton.href =
-          track.downloadUrl;
+          track.download_url;
 
         downloadButton.textContent =
-          track.downloadText ||
+          track.download_text ||
           "Download WAV";
 
         article.appendChild(
@@ -799,7 +881,7 @@
 
 
     /* =========================================================
-       RESET
+       RESET ACCESS
     ========================================================= */
 
     function resetVault() {
@@ -815,7 +897,7 @@
 
 
     /* =========================================================
-       ESCAPE
+       ESCAPE ERROR TEXT
     ========================================================= */
 
     function escapeHtml(value) {
@@ -844,7 +926,9 @@
       "keydown",
       function(event) {
 
-        if (event.key === "Enter") {
+        if (
+          event.key === "Enter"
+        ) {
 
           event.preventDefault();
 
@@ -873,13 +957,14 @@
           window.location.search
         );
 
+
       const verification =
-        params.get("verification");
+        params.get(
+          "verification"
+        );
 
 
-      /*
-        Successful click from vault-verify.
-      */
+      /* VERIFIED */
 
       if (
         verification === "success"
@@ -890,10 +975,6 @@
           "yes"
         );
 
-
-        /*
-          Remove ?verification=success from URL.
-        */
 
         window.history.replaceState(
           {},
@@ -909,9 +990,7 @@
       }
 
 
-      /*
-        Expired verification.
-      */
+      /* EXPIRED */
 
       if (
         verification === "expired"
@@ -929,9 +1008,7 @@
       }
 
 
-      /*
-        Invalid/used token.
-      */
+      /* INVALID */
 
       if (
         verification === "invalid"
@@ -949,9 +1026,7 @@
       }
 
 
-      /*
-        Server-side verification error.
-      */
+      /* ERROR */
 
       if (
         verification === "error"
@@ -969,9 +1044,7 @@
       }
 
 
-      /*
-        Returning verified visitor.
-      */
+      /* RETURNING VERIFIED VISITOR */
 
       const access =
         localStorage.getItem(
@@ -979,7 +1052,9 @@
         );
 
 
-      if (access === "yes") {
+      if (
+        access === "yes"
+      ) {
 
         await showVault();
 
@@ -988,9 +1063,7 @@
       }
 
 
-      /*
-        New visitor.
-      */
+      /* NEW VISITOR */
 
       showGate();
 
@@ -1002,4 +1075,5 @@
   </script>
 
 </body>
+
 </html>
